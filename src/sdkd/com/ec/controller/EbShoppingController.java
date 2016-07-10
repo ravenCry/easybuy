@@ -2,6 +2,7 @@ package sdkd.com.ec.controller;
 
 import sdkd.com.ec.dao.impl.EbShoppingCarDao;
 import sdkd.com.ec.model.EbProduct;
+import sdkd.com.ec.model.EbShoppingCarItem;
 import sdkd.com.ec.model.EbUser;
 
 import javax.servlet.ServletException;
@@ -23,13 +24,14 @@ public class EbShoppingController extends HttpServlet {
     EbUser currentUser=null;
     public void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-
+        String id=request.getParameter("id");
+        ebShoppingCarDao.insertProductInMyShoppingCar(id,currentUser.getId()+"");
     }
     public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        List<EbProduct> myShoppingCarProducts=ebShoppingCarDao.getShoppingCarByUserId(currentUser.getId()+"");
+        List<EbShoppingCarItem> myShoppingCarItems=ebShoppingCarDao.getShoppingCarByUserId(currentUser.getId()+"");
         HttpSession session=request.getSession();
-        session.setAttribute("myShoppingCarProducts",myShoppingCarProducts);
+        session.setAttribute("myShoppingCarItems",myShoppingCarItems);
         request.getRequestDispatcher("/shopping.jsp").forward(request,response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,11 +46,16 @@ public class EbShoppingController extends HttpServlet {
         {
             if("insert".equals(action))
             {
+                insert(request,response);
                 list(request,response);
             }
             else if("list".equals(action))
             {
-
+                list(request,response);
+            }
+            else
+            {
+                list(request,response);
             }
         }
         else
