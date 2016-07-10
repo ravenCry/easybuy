@@ -56,6 +56,22 @@
 					<th>购买数量</th>
 					<th>操作</th>
 				</tr>
+				<tr id="product_id_1">
+				<c:forEach var="scItem" items="${myShoppingCarProducts}">
+					<td class="thumb"><img src="${scItem.filename}" /><a href="product-view.jsp">${scItem.name}</a></td>
+					<td class="price" id="price_id_1">
+						<span>${scItem.price}</span>
+						<input type="hidden" value="99" />
+					</td>
+					<td class="number">
+						<dl>
+							<dt><input id="number_id_1" type="text" name="number" value="1" /></dt>
+							<dd onclick="reloadPrice(1,true);">修改</dd>
+						</dl>
+					</td>
+					<td class="delete"><a href="javascript:delShopping(1);">删除</a></td>
+				</c:forEach>
+				</tr>
 			</table>
 			<div class="button"><input type="submit" value="" /></div>
 		</form>
