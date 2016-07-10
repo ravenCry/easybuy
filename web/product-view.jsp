@@ -74,7 +74,7 @@
 	<div id="product" class="main">
 		<h1>${ebProduct.name}</h1>
 		<div class="infos">
-			<div class="thumb"><img src="images/product/${ebProduct.id-1}.jpg" /></div>
+			<div class="thumb"><img src="${ebProduct.filename}" /></div>
 			<div class="buy">
 				<p>商城价：<span class="price">${ebProduct.price}</span></p>
 				<p>库　存：${ebProduct.stock}</p>
