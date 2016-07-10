@@ -46,7 +46,7 @@ public class EbShoppingController extends HttpServlet {
         {
             if("insert".equals(action))
             {
-                insert(request,response);
+                //insert(request,response);
                 list(request,response);
             }
             else if("list".equals(action))

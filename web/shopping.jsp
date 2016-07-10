@@ -57,19 +57,19 @@
 					<th>操作</th>
 				</tr>
 				<c:forEach var="scItem" items="${myShoppingCarItems}">
-				<tr id="product_id_1">
+				<tr id="product_id_${scItem.esp_id}">
 					<td class="thumb"><img src="${scItem.ebProduct.filename}" /><a href="product-view.jsp">${scItem.ebProduct.name}</a></td>
-					<td class="price" id="price_id_1">
+					<td class="price" id="price_id_${scItem.esp_id}">
 						<span>${scItem.ebProduct.price}</span>
-						<input type="hidden" value="99" />
+						<input type="hidden" value="${scItem.ebProduct.price}" />
 					</td>
 					<td class="number">
 						<dl>
-							<dt><input id="number_id_1" type="text" name="number" value="1" /></dt>
-							<dd onclick="reloadPrice(1,true);">修改</dd>
+							<dt><input id="number_id_${scItem.esp_id}" type="text" name="number" value="1" /></dt>
+							<dd onclick="reloadPrice(${scItem.esp_id},true);">修改</dd>
 						</dl>
 					</td>
-					<td class="delete"><a href="javascript:delShopping(1);">删除</a></td>
+					<td class="delete"><a href="javascript:delShopping(${scItem.esp_id});">删除</a></td>
 					</tr>
 				</c:forEach>
 			</table>
