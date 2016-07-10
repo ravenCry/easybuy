@@ -52,7 +52,27 @@ public class EbShoppingCarDao extends BaseDao{
         List<String> params=new ArrayList<String>();
         params.add(productId);
         params.add(userId);
-        String sql="insert into ebshoppingcar(ep_id,eb_user_id,esh_quantity) values (?,?,1)";
+        String sql="update ebshoppingcar set esh_quantity = esh_quantity + 1 where ep_id = ? and eb_user_id = ?";
+        int modifyRows = this.exeucteModify(sql,params);
+        if(modifyRows==0)
+        {
+            sql="insert into ebshoppingcar(ep_id,eb_user_id,esh_quantity) values (?,?,1)";
+            this.exeucteModify(sql,params);
+        }
+    }
+    public void updateProductInMyShoppingCar(String item_id,String quantity)
+    {
+        List<String> params=new ArrayList<String>();
+        params.add(quantity);
+        params.add(item_id);
+        String sql="update ebshoppingcar set esh_quantity = ? where esp_id = ?";
+        this.exeucteModify(sql,params);
+    }
+    public void deleteProductInMyShoppingCar(String item_id)
+    {
+        List<String> params=new ArrayList<String>();
+        params.add(item_id);
+        String sql="delete from ebshoppingcar where esp_id = ?";
         this.exeucteModify(sql,params);
     }
 }

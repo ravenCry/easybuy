@@ -58,15 +58,17 @@
 				</tr>
 				<c:forEach var="scItem" items="${myShoppingCarItems}">
 				<tr id="product_id_${scItem.esp_id}">
-					<td class="thumb"><img src="${scItem.ebProduct.filename}" /><a href="product-view.jsp">${scItem.ebProduct.name}</a></td>
+					<td class="thumb"><img src="${scItem.ebProduct.filename}" />
+						<a href="product-view.jsp">${scItem.ebProduct.name}</a></td>
 					<td class="price" id="price_id_${scItem.esp_id}">
-						<span>${scItem.ebProduct.price}</span>
+						<span>￥${String.format("%.2f", scItem.ebProduct.price*scItem.esh_quantity)}</span>
 						<input type="hidden" value="${scItem.ebProduct.price}" />
 					</td>
 					<td class="number">
 						<dl>
-							<dt><input id="number_id_${scItem.esp_id}" type="text" name="number" value="1" /></dt>
-							<dd onclick="reloadPrice(${scItem.esp_id},true);">修改</dd>
+							<dt><input id="number_id_${scItem.esp_id}" type="text" name="number" value="${scItem.esh_quantity}" /></dt>
+							<dd onclick="reloadPrice(${scItem.esp_id},true);">+</dd>
+							<dd onclick="reloadPrice(${scItem.esp_id},false);">-</dd>
 						</dl>
 					</td>
 					<td class="delete"><a href="javascript:delShopping(${scItem.esp_id});">删除</a></td>

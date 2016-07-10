@@ -27,6 +27,17 @@ public class EbShoppingController extends HttpServlet {
         String id=request.getParameter("id");
         ebShoppingCarDao.insertProductInMyShoppingCar(id,currentUser.getId()+"");
     }
+    public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        String item_id=request.getParameter("item_id");
+        String item_number=request.getParameter("item_number");
+        ebShoppingCarDao.updateProductInMyShoppingCar(item_id,item_number);
+    }
+    public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        String item_id=request.getParameter("item_id");
+        ebShoppingCarDao.deleteProductInMyShoppingCar(item_id);
+    }
     public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         List<EbShoppingCarItem> myShoppingCarItems=ebShoppingCarDao.getShoppingCarByUserId(currentUser.getId()+"");
@@ -46,11 +57,21 @@ public class EbShoppingController extends HttpServlet {
         {
             if("insert".equals(action))
             {
-                //insert(request,response);
+                insert(request,response);
                 list(request,response);
             }
             else if("list".equals(action))
             {
+                list(request,response);
+            }
+            else if("update".equals(action))
+            {
+                update(request,response);
+                list(request,response);
+            }
+            else if("delete".equals(action))
+            {
+                delete(request,response);
                 list(request,response);
             }
             else

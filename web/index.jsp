@@ -81,7 +81,7 @@
 				<c:forEach var="product" items="${productDiscountList}">
 					<li>
 						<dl>
-							<dt><a href="product.do?id=${product.id}&action=detail" target="_blank"></a><img src="images/product/${product.id-1}.jpg" /></dt>
+							<dt><a href="product.do?id=${product.id}&action=detail" target="_blank"></a><img src="${product.filename}" /></dt>
 							<dd class="title"><a href="product.do?id=${product.id}&action=detail" target="_blank">${product.name}</a></dd>
 							<dd class="price">${product.price}</dd>
 						</dl>
@@ -115,7 +115,7 @@
 				<c:forEach var="product" items="${productHotList}">
 					<li>
 						<dl>
-							<dt><a href="product.do?id=${product.id}&action=detail" target="_blank"></a><img src="images/product/${product.id-1}.jpg" /></dt>
+							<dt><a href="product.do?id=${product.id}&action=detail" target="_blank"></a><img src="${product.filename}" /></dt>
 							<dd class="title"><a href="product.do?id=${product.id}&action=detail" target="_blank">${product.name}</a></dd>
 							<dd class="price">${product.price}</dd>
 						</dl>

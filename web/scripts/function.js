@@ -160,6 +160,7 @@ function delShopping(id)
 		setCookie("product", newCookie);
 	}
 	if(tr) tr.parentNode.removeChild(tr);
+	location.href = "shopping.do?action=delete&item_id="+ id;
 }
 
 function reloadPrice(id, status)
@@ -176,5 +177,6 @@ function reloadPrice(id, status)
 			number.value--;
 		}
 	}
-	priceBox.innerHTML = "￥" + price * number.value;
+	//priceBox.innerHTML = "￥" + price * number.value;
+	location.href = "shopping.do?action=update&item_id="+ id + "&item_number="+ number.value;
 }
