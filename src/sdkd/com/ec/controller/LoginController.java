@@ -39,7 +39,10 @@ public class LoginController extends HttpServlet {
         if (ebUser!=null) {
             HttpSession session=request.getSession();
             session.setAttribute("currentUser",ebUser);
-            request.getRequestDispatcher("/all.do").forward(request,response);
+            if(ebUser.getStatus()==1)
+                request.getRequestDispatcher("/all.do").forward(request,response);
+            else
+                request.getRequestDispatcher("manage/index.jsp").forward(request,response);
         }
         //response.sendRedirect("/all.do");
 

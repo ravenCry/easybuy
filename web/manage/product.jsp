@@ -9,7 +9,7 @@
 <body>
 <div id="header" class="wrap">
 	<div id="logo"><img src="../images/logo.gif" /></div>
-	<div class="help"><a href="../index.html">返回前台页面</a></div>
+	<div class="help"><a href="../index.jsp">返回前台页面</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
 			<li><a href="index.jsp">首页</a></li>
@@ -58,12 +58,12 @@
 				</tr>
 				<tr>
 					<td class="first w4 c">1</td>
-					<td class="thumb"><img src="../images/product/0_tiny.gif" /><a href="../product-view.html" target="_blank">铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机</a></td>
+					<td class="thumb"><img src="../images/product/0_tiny.gif" /><a href="../product-view.jsp" target="_blank">铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机</a></td>
 					<td class="w1 c"><a href="product-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
 				</tr>
 				<tr>
 					<td class="first w4 c">1</td>
-					<td class="thumb"><img src="../images/product/0_tiny.gif" /><a href="../product-view.html" target="_blank">铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机</a></td>
+					<td class="thumb"><img src="../images/product/0_tiny.gif" /><a href="../product-view.jsp" target="_blank">铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机</a></td>
 					<td class="w1 c"><a href="product-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
 				</tr>
 			</table>

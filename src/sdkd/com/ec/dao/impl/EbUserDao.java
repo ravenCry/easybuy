@@ -26,10 +26,30 @@ public class EbUserDao extends BaseDao{
                 ebUser.setId(rs.getInt("eb_user_id"));
                 ebUser.setName(rs.getString("eb_user_name"));
                 ebUser.setPassword(rs.getString("eu_password"));
+                ebUser.setStatus(rs.getInt("eu_status"));
             }
         } catch (SQLException e) {
 
         }
         return ebUser;
+    }
+    public void insert(List<String> params)
+    {
+        String sql="insert into ebUser(eb_user_name,eu_password,eu_sex" +
+                "eu_birthday,eu_mobile,eu_address) values(?,?,?,?,?,?)";
+        this.exeucteModify(sql,params);
+    }
+    public void update(List<String> params)
+    {
+        String sql="update ebUser set eb_user_name=? and eu_password=? and " +
+                "eu_sex=? and eu_birthday=? and eu_mobile=? and eu_address=?" +
+                "where eb_user_id=?";
+        this.exeucteModify(sql,params);
+    }
+    public void delete(String eb_user_id)
+    {
+        List<String> params=new ArrayList<String>();
+        String sql="delete from ebUser where eb_user_id=?";
+        this.exeucteModify(sql,params);
     }
 }
