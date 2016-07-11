@@ -73,7 +73,6 @@ public class BaseDao {
             PreparedStatement ps = con.prepareStatement(sql);
             //对于集合，在使用前一定要判断非空！！！
             if(params!=null && params.size()>0){
-
                 for(int i=0;i<params.size();i++){
                     ps.setString((i+1),params.get(i));
                 }
