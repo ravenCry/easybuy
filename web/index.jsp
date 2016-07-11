@@ -56,7 +56,7 @@
 						<dt>${proCategory.name}</dt>
 						<c:forEach var="proCategoryChild" items="${proCategoryList}">
 							<c:if test="${proCategoryChild.parentId==proCategory.id}">
-								<dd><a href="product-list.jsp">${proCategoryChild.name}</a></dd>
+								<dd><a href="product.do?action=epc_child_id&pc_id=${proCategoryChild.id}">${proCategoryChild.name}</a></dd>
 							</c:if>
 						</c:forEach>
 					</c:if>
