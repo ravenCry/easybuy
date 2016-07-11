@@ -33,4 +33,23 @@ public class EbCommentDao extends BaseDao{
         }
         return commentList;
     }
+    public void insert(List<String> params)
+    {
+        String sql="insert into ebcomment(ec_reply,ec_content" +
+                "ec_create_time,ec_reply_time,eb_user_name) values(?,?,?,?,?)";
+        this.exeucteModify(sql,params);
+    }
+    public void update(List<String> params)
+    {
+        String sql="update ebcomment set ec_reply=? and ec_content=? and " +
+                "ec_create_time=? and ec_reply_time=? and eb_user_name=? and eu_address=?" +
+                "where ec_id=?";
+        this.exeucteModify(sql,params);
+    }
+    public void delete(String ec_id)
+    {
+        List<String> params=new ArrayList<String>();
+        String sql="delete from ebcomment where ec_id=?";
+        this.exeucteModify(sql,params);
+    }
 }

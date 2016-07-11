@@ -37,4 +37,25 @@ public class EbProductDao extends BaseDao {
         }
         return productsList;
     }
+    public void insert(List<String> params)
+    {
+        String sql="insert into ebproduct(ep_name,ep_decription,ep_price" +
+                "ep_stock,epc_id,epc_child_id"+
+        "ep_file_name,ep_view,ep_discount) values(?,?,?,?,?,?,?,?,?)";
+        this.exeucteModify(sql,params);
+    }
+    public void update(List<String> params)
+    {
+        String sql="update ebUser set ep_name=? and ep_decription=? and " +
+                "ep_price=? and ep_stock=? and epc_id=? and epc_child_id=?" +
+                "ep_file_name=? and ep_view=? and ep_discount=? "+
+                "where eb_user_id=?";
+        this.exeucteModify(sql,params);
+    }
+    public void delete(String eb_user_id)
+    {
+        List<String> params=new ArrayList<String>();
+        String sql="delete from ebproduct where ep_id=?";
+        this.exeucteModify(sql,params);
+    }
 }

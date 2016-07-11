@@ -48,4 +48,23 @@ public class EbNewsDao extends BaseDao {
         }
         return news;
     }
+    public void insert(List<String> params)
+    {
+        String sql="insert into ebnews(en_title,en_content"+
+                "en_create_time ) values(?,?,?)";
+        this.exeucteModify(sql,params);
+    }
+    public void update(List<String> params)
+    {
+        String sql="update ebnews set en_title=? and en_content=? and " +
+                "en_create_time" +
+                "where en_id=?";
+        this.exeucteModify(sql,params);
+    }
+    public void delete(String en_id)
+    {
+        List<String> params=new ArrayList<String>();
+        String sql="delete from ebnews where en_id=?";
+        this.exeucteModify(sql,params);
+    }
 }
