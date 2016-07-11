@@ -16,16 +16,38 @@ import java.util.List;
  */
 @WebServlet(name = "EbProCategoryController")
 public class EbProCategoryController extends HttpServlet {
+    public void select(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        EbProCategoryDao proCategoryDao = new EbProCategoryDao();
+        List<EbProCategory> list = proCategoryDao.getProCategory();
+        request.setAttribute("proCategoryList",list);
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action=request.getParameter("action");
+        if("manageSelect".equals(action))
+        {
 
-        EbProCategoryDao proCategoryDao = new EbProCategoryDao();
-        List<EbProCategory> list = proCategoryDao.getProCategory();
-        request.setAttribute("proCategoryList",list);
+        }
+        else if("manageInsert".equals(action))
+        {
 
-        request.getRequestDispatcher("/comment.do").forward(request,response);
+        }
+        else if("managerUpdate".equals(action))
+        {
+
+        }
+        else if("managerDelete".equals(action))
+        {
+
+        }
+        else
+        {
+            select(request,response);
+            request.getRequestDispatcher("/comment.do").forward(request,response);
+        }
     }
 }

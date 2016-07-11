@@ -35,7 +35,7 @@ public class RegisterController extends HttpServlet {
             params.add(password);
             try
             {
-                new BaseDao().exeucteModify("insert into ebuser(eb_user_name,eu_password) values(?,?)",params);
+                new BaseDao().exeucteModify("insert into ebuser(eb_user_name,eu_password,eu_status) values(?,?,1)",params);
                 EbUser currentUser=new EbUser();
                 currentUser.setName(username);
                 currentUser.setPassword(password);

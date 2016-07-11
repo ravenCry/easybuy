@@ -86,7 +86,7 @@ function showChater()
 
 function openRoom()
 {
-	window.open("chat-room.html","chater","status=0,scrollbars=0,menubar=0,location=0,width=600,height=400");
+	window.open("chat-room.jsp","chater","status=0,scrollbars=0,menubar=0,location=0,width=600,height=400");
 }
 
 function scrollChater()
