@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,8 +16,8 @@
 			<li><a href="user.html">用户</a></li>
 			<li><a href="product.html">商品</a></li>
 			<li><a href="order.html">订单</a></li>
-			<li><a href="guestbook.html">留言</a></li>
-			<li class="current"><a href="news.html">新闻</a></li>
+			<li class="current"><a href="guestbook.html">留言</a></li>
+			<li><a href="news.html">新闻</a></li>
 		</ul>
 	</div>
 </div>
@@ -48,25 +48,32 @@
 		</div>
 	</div>
 	<div class="main">
-		<h2>新闻管理</h2>
+		<h2>回复留言</h2>
 		<div class="manage">
-			<table class="list">
-				<tr>
-					<th>ID</th>
-					<th>新闻标题</th>
-					<th>操作</th>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td>高老庄地震了</td>
-					<td class="w1 c"><a href="news-modify.html">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td>高老庄地震了</td>
-					<td class="w1 c"><a href="news-modify.html">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-			</table>
+			<form action="manage-result.html">
+				<table class="form">
+					<tr>
+						<td class="field">留言ID：</td>
+						<td><input type="text" class="text" name="orderId" value="100000" readonly="readonly" /></td>
+					</tr>
+					<tr>
+						<td class="field">留言姓名：</td>
+						<td><input type="text" class="text" name="name" value="张三" /></td>
+					</tr>
+					<tr>
+						<td class="field">留言内容：</td>
+						<td>高老庄的货发了没？</td>
+					</tr>
+					<tr>
+						<td class="field">回复内容：</td>
+						<td><textarea name="replyContent"></textarea></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><label class="ui-blue"><input type="submit" name="submit" value="更新" /></label></td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</div>
 	<div class="clear"></div>

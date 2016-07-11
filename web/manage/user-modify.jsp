@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -13,8 +13,8 @@
 	<div class="navbar">
 		<ul class="clearfix">
 			<li><a href="index.html">首页</a></li>
-			<li><a href="user.html">用户</a></li>
-			<li class="current"><a href="product.html">商品</a></li>
+			<li class="current"><a href="user.html">用户</a></li>
+			<li><a href="product.html">商品</a></li>
 			<li><a href="order.html">订单</a></li>
 			<li><a href="guestbook.html">留言</a></li>
 			<li><a href="news.html">新闻</a></li>
@@ -48,23 +48,54 @@
 		</div>
 	</div>
 	<div class="main">
-		<h2>添加分类</h2>
+		<h2>修改用户</h2>
 		<div class="manage">
 			<form action="manage-result.html">
 				<table class="form">
 					<tr>
-						<td class="field">父分类：</td>
+						<td class="field">用户名：</td>
+						<td><input type="text" class="text" name="userName" value="zhangsan" readonly="readonly" /></td>
+					</tr>
+					<tr>
+						<td class="field">姓名：</td>
+						<td><input type="text" class="text" name="name" value="张三" /></td>
+					</tr>
+					<tr>
+						<td class="field">密码：</td>
+						<td><input type="text" class="text" name="passWord" value="zhangsan" /></td>
+					</tr>
+					<tr>
+						<td class="field">性别：</td>
+						<td><input type="radio" name="sex" value="1" checked="checked" />男 <input type="radio" name="sex" value="1" />女</td>
+					</tr>
+					<tr>
+						<td class="field">出生日期：</td>
 						<td>
-							<select name="parentId">
-								<option value="0" selected="selected">根栏目</option>
-								<option value="1">电器</option>
-								<option value="2">衣服</option>
-							</select>
+							<select name="birthyear">
+								<option value="2000">2000</option>
+								<option value="1999" selected="selected">1999</option>
+							</select>年
+							<select name="birthmonth">
+								<option value="12">12</option>
+								<option value="11" selected="selected">11</option>
+							</select>月
+							<select name="birthday">
+								<option value="2">2</option>
+								<option value="1" selected="selected">1</option>
+							</select>日
 						</td>
 					</tr>
 					<tr>
-						<td class="field">分类名称：</td>
-						<td><input type="text" class="text" name="className" value="电脑" /></td>
+						<td class="field">手机号码：</td>
+						<td><input type="text" class="text" name="mobile" value="13800000000" /></td>
+					</tr>
+					<tr>
+						<td class="field">送货地址：</td>
+						<td><input type="text" class="text" name="address" value="高老庄" /></td>
+					</tr>
+					<tr>
+						<td class="field">头像：</td>
+						<td><input type="file" class="text" name="photo" /></td>
 					</tr>
 					<tr>
 						<td></td>

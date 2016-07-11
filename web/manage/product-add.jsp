@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -13,8 +13,8 @@
 	<div class="navbar">
 		<ul class="clearfix">
 			<li><a href="index.html">首页</a></li>
-			<li class="current"><a href="user.html">用户</a></li>
-			<li><a href="product.html">商品</a></li>
+			<li><a href="user.html">用户</a></li>
+			<li class="current"><a href="product.html">商品</a></li>
 			<li><a href="order.html">订单</a></li>
 			<li><a href="guestbook.html">留言</a></li>
 			<li><a href="news.html">新闻</a></li>
@@ -48,54 +48,46 @@
 		</div>
 	</div>
 	<div class="main">
-		<h2>新增用户</h2>
+		<h2>添加商品</h2>
 		<div class="manage">
 			<form action="manage-result.html">
 				<table class="form">
 					<tr>
-						<td class="field">用户名：</td>
-						<td><input type="text" class="text" name="userName" value="" /></td>
+						<td class="field">商品名称：</td>
+						<td><input type="text" class="text" name="productName" value="铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机" /></td>
 					</tr>
 					<tr>
-						<td class="field">姓名：</td>
-						<td><input type="text" class="text" name="name" value="" /></td>
-					</tr>
-					<tr>
-						<td class="field">密码：</td>
-						<td><input type="text" class="text" name="passWord" value="" /></td>
-					</tr>
-					<tr>
-						<td class="field">性别：</td>
-						<td><input type="radio" name="sex" value="1" checked="checked" />男 <input type="radio" name="sex" value="1" />女</td>
-					</tr>
-					<tr>
-						<td class="field">出生日期：</td>
+						<td class="field">所属分类：</td>
 						<td>
-							<select name="birthyear">
-								<option value="2000">2000</option>
-								<option value="1999">1999</option>
-							</select>年
-							<select name="birthmonth">
-								<option value="12">12</option>
-								<option value="11">11</option>
-							</select>月
-							<select name="birthday">
-								<option value="2">2</option>
-								<option value="1">1</option>
-							</select>日
+							<select name="parentId">
+								<option value="1">电器</option>
+								<option value="3">├ 电器</option>
+								<option value="3">└ 电器</option>
+								<option value="2">衣服</option>
+								<option value="3">├ 电器</option>
+								<option value="3">└ 电器</option>
+							</select>
 						</td>
 					</tr>
 					<tr>
-						<td class="field">手机号码：</td>
-						<td><input type="text" class="text" name="mobile" value="" /></td>
-					</tr>
-					<tr>
-						<td class="field">送货地址：</td>
-						<td><input type="text" class="text" name="address" value="" /></td>
-					</tr>
-					<tr>
-						<td class="field">头像：</td>
+						<td class="field">商品图片：</td>
 						<td><input type="file" class="text" name="photo" /></td>
+					</tr>
+					<tr>
+						<td class="field">商品价格：</td>
+						<td><input type="text" class="text tiny" name="productPrice" /> 元</td>
+					</tr>
+					<tr>
+						<td class="field">品牌：</td>
+						<td><input type="text" class="text" name="productName" /></td>
+					</tr>
+					<tr>
+						<td class="field">库存：</td>
+						<td><input type="text" class="text tiny" name="productName" /></td>
+					</tr>
+					<tr>
+						<td class="field">条码号：</td>
+						<td><input type="text" class="text" name="productName" /></td>
 					</tr>
 					<tr>
 						<td></td>

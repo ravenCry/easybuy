@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -13,11 +13,11 @@
 	<div class="navbar">
 		<ul class="clearfix">
 			<li><a href="index.html">首页</a></li>
-			<li><a href="user.html">用户</a></li>
+			<li class="current"><a href="user.html">用户</a></li>
 			<li><a href="product.html">商品</a></li>
 			<li><a href="order.html">订单</a></li>
 			<li><a href="guestbook.html">留言</a></li>
-			<li class="current"><a href="news.html">新闻</a></li>
+			<li><a href="news.html">新闻</a></li>
 		</ul>
 	</div>
 </div>
@@ -48,24 +48,34 @@
 		</div>
 	</div>
 	<div class="main">
-		<h2>修改新闻</h2>
+		<h2>用户管理</h2>
 		<div class="manage">
-			<form action="manage-result.html">
-				<table class="form">
-					<tr>
-						<td class="field">新闻标题：</td>
-						<td><input type="text" class="text" name="title" value="" /></td>
-					</tr>
-					<tr>
-						<td class="field">新闻内容：</td>
-						<td><textarea name="content"></textarea></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><label class="ui-blue"><input type="submit" name="submit" value="修改" /></label></td>
-					</tr>
-				</table>
-			</form>
+			<table class="list">
+				<tr>
+					<th>ID</th>
+					<th>姓名</th>
+					<th>性别</th>
+					<th>Email</th>
+					<th>手机</th>
+					<th>操作</th>
+				</tr>
+				<tr>
+					<td class="first w4 c">1</td>
+					<td class="w1 c">张三丰</td>
+					<td class="w2 c">男</td>
+					<td>fengsan.zhang@prd.com</td>
+					<td class="w4 c">13888888888</td>
+					<td class="w1 c"><a href="user-modify.html">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+				</tr>
+				<tr>
+					<td class="first w4 c">2</td>
+					<td class="w1 c">杨二郎</td>
+					<td class="w2 c">男</td>
+					<td>fengsan.zhang@prd.com</td>
+					<td class="w4 c">13888888888</td>
+					<td class="w1 c"><a href="user-modify.html">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	<div class="clear"></div>

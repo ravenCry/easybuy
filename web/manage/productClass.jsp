@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,9 +12,9 @@
 	<div class="help"><a href="../index.html">返回前台页面</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
-			<li class="current"><a href="index.html">首页</a></li>
+			<li><a href="index.html">首页</a></li>
 			<li><a href="user.html">用户</a></li>
-			<li><a href="product.html">商品</a></li>
+			<li class="current"><a href="product.html">商品</a></li>
 			<li><a href="order.html">订单</a></li>
 			<li><a href="guestbook.html">留言</a></li>
 			<li><a href="news.html">新闻</a></li>
@@ -48,21 +48,45 @@
 		</div>
 	</div>
 	<div class="main">
-		<h2>提示信息</h2>
+		<h2>分类管理</h2>
 		<div class="manage">
-			<div class="shadow">
-				<em class="corner lb"></em>
-				<em class="corner rt"></em>
-				<div class="box">
-					<div class="msg">
-						<p>恭喜：操作成功！</p>
-						<p>正在进入首页...</p>
-						<script type="text/javascript">
-							setTimeout("location.href='index.html'", 1000);
-						</script>
-					</div>
-				</div>
-			</div>
+			<table class="list">
+				<tr>
+					<th>ID</th>
+					<th>分类名称</th>
+					<th>操作</th>
+				</tr>
+				<tr>
+					<td class="first w4 c">1</td>
+					<td>大类</td>
+					<td class="w1 c"><a href="productClass-modify.html">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+				</tr>
+				<tr>
+					<td class="first w4 c">1</td>
+					<td class="childClass">小类</td>
+					<td class="w1 c"><a href="productClass-modify.html">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+				</tr>
+				<tr>
+					<td class="first w4 c">1</td>
+					<td class="childClass">小类</td>
+					<td class="w1 c"><a href="productClass-modify.html">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+				</tr>
+				<tr>
+					<td class="first w4 c">1</td>
+					<td>大类</td>
+					<td class="w1 c"><a href="productClass-modify.html">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+				</tr>
+				<tr>
+					<td class="first w4 c">1</td>
+					<td class="childClass">小类</td>
+					<td class="w1 c"><a href="productClass-modify.html">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+				</tr>
+				<tr>
+					<td class="first w4 c">1</td>
+					<td class="childClass">小类</td>
+					<td class="w1 c"><a href="productClass-modify.html">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	<div class="clear"></div>
