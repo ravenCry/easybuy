@@ -69,7 +69,10 @@
 						<td class="w1 c">${user.mobile}</td>
 
 
-						<td class="w1 c"><a href="manage/user-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+						<td class="w1 c"><a href="user.do?
+						action=jump2modify&eb_user_id=${user.id}&
+						eb_user_name=${user.name}&eu_password=${user.password}&
+						eu_sex=${user.sex}&eu_mobile=${user.mobile}&eb_address=${user.address}">修改</a> <a href="user.do?action=delete&userId=${user.id}">删除</a></td>
 					</tr>
 				</c:forEach>
 			</table>

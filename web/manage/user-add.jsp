@@ -50,7 +50,7 @@
 	<div class="main">
 		<h2>新增用户</h2>
 		<div class="manage">
-			<form action="manage-result.jsp">
+			<form action="/user.do">
 				<table class="form">
 					<tr>
 						<td class="field">用户名：</td>

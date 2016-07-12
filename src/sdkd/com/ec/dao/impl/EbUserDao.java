@@ -50,6 +50,7 @@ public class EbUserDao extends BaseDao {
                 news.setMobile(rs.getString("eu_mobile"));
                 news.setAddress(rs.getString("eb_address"));
                 news.setStatus(rs.getInt("eu_status"));
+                news.setPassword(rs.getString("eu_password"));
 
 
                 //添加到集合中
@@ -62,21 +63,22 @@ public class EbUserDao extends BaseDao {
     }
     public void insert(List<String> params)
     {
-        String sql="insert into ebUser(eb_user_name,eu_password,eu_sex" +
-                "eu_birthday,eu_mobile,eu_address) values(?,?,?,?,?,?)";
+        String sql="insert into ebuser(eb_user_name,eu_password,eu_sex," +
+                "eu_birthday,eu_mobile,eb_address) values(?,?,?,?,?,?)";
         this.exeucteModify(sql,params);
     }
     public void update(List<String> params)
     {
-        String sql="update ebUser set eb_user_name=? and eu_password=? and " +
-                "eu_sex=? and eu_birthday=? and eu_mobile=? and eu_address=?" +
+        String sql="update ebuser set eb_user_name=? , eu_password=? , " +
+                "eu_sex=? , eu_birthday=? , eu_mobile=? , eb_address=?" +
                 "where eb_user_id=?";
         this.exeucteModify(sql,params);
     }
     public void delete(String eb_user_id)
     {
         List<String> params=new ArrayList<String>();
-        String sql="delete from ebUser where eb_user_id=?";
+        params.add(eb_user_id);
+        String sql="delete from ebuser where eb_user_id=?";
         this.exeucteModify(sql,params);
     }
 }

@@ -34,7 +34,7 @@
 		<div class="box">
 			<dl>
 				<dt>用户管理</dt>
-				<dd><em><a href="user-add.jsp">新增</a></em><a href="user.do?action=userList">用户管理</a></dd>
+				<dd><em><a href="/manage/user-add.jsp">新增</a></em><a href="user.do?action=userList">用户管理</a></dd>
 				<dt>商品信息</dt>
 				<dd><em><a href="productClass-add.jsp">新增</a></em><a href="productClass.jsp">分类管理</a></dd>
 				<dd><em><a href="product-add.jsp">新增</a></em><a href="proCategory.do?action=manageList">商品管理</a></dd>

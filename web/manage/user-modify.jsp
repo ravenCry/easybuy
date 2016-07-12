@@ -50,23 +50,23 @@
 	<div class="main">
 		<h2>修改用户</h2>
 		<div class="manage">
-			<form action="manage-result.jsp">
+			<form action="/user.do">
 				<table class="form">
 					<tr>
 						<td class="field">用户名：</td>
-						<td><input type="text" class="text" name="userName" value="zhangsan" readonly="readonly" /></td>
+						<td><input type="text" class="text" name="userName" value="${eb_user_id}" readonly="readonly" /></td>
 					</tr>
 					<tr>
 						<td class="field">姓名：</td>
-						<td><input type="text" class="text" name="name" value="张三" /></td>
+						<td><input type="text" class="text" name="name" value="${eb_user_name}" /></td>
 					</tr>
 					<tr>
 						<td class="field">密码：</td>
-						<td><input type="text" class="text" name="passWord" value="zhangsan" /></td>
+						<td><input type="text" class="text" name="passWord" value="${eu_password}" /></td>
 					</tr>
 					<tr>
 						<td class="field">性别：</td>
-						<td><input type="radio" name="sex" value="1" checked="checked" />男 <input type="radio" name="sex" value="1" />女</td>
+						<td><input type="radio" name="sex" value="1" checked="checked" />男 <input type="radio" name="sex" value="0" />女</td>
 					</tr>
 					<tr>
 						<td class="field">出生日期：</td>
@@ -87,11 +87,11 @@
 					</tr>
 					<tr>
 						<td class="field">手机号码：</td>
-						<td><input type="text" class="text" name="mobile" value="13800000000" /></td>
+						<td><input type="text" class="text" name="mobile" value="${eu_mobile}" /></td>
 					</tr>
 					<tr>
 						<td class="field">送货地址：</td>
-						<td><input type="text" class="text" name="address" value="高老庄" /></td>
+						<td><input type="text" class="text" name="address" value="${eb_address}" /></td>
 					</tr>
 					<tr>
 						<td class="field">头像：</td>
