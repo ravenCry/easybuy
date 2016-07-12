@@ -25,9 +25,9 @@ public class EbNewsController extends HttpServlet {
     }
     public void allList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-
+        EbNewsDao newsDao = new EbNewsDao();
         List<EbNews> list = newsDao.getNews();
-        request.setAttribute("list",list);
+        request.setAttribute("news-List",list);
         request.getRequestDispatcher("/manage/news.jsp").forward(request,response);
     }
     public void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

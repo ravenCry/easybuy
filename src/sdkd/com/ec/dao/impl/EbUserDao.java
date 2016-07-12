@@ -3,7 +3,8 @@ package sdkd.com.ec.dao.impl;
 import sdkd.com.ec.dao.BaseDao;
 import sdkd.com.ec.model.EbUser;
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,8 @@ import java.util.List;
  * 用户DAO
  * Created by SDUST-132 on 2016/7/5.
  */
-public class EbUserDao extends BaseDao{
-    public EbUser match(String username,String password)
+public class EbUserDao extends BaseDao {
+    public EbUser match(String username, String password)
     {
         EbUser ebUser=new EbUser();
         String sql="select * from ebuser  where eb_user_name = ? and eu_password = ?";
@@ -34,48 +35,50 @@ public class EbUserDao extends BaseDao{
         return ebUser;
     }
     public List<EbUser> getUser(){
-        List<EbUser> userList=new ArrayList<EbUser>();
+        List<EbUser> newsList = new ArrayList<EbUser>();
         String sql = "select * from ebuser";
         try {
             ResultSet rs = this.executeSearch(sql,null);
             while (rs.next()){
-                EbUser user = new EbUser();
-                user.setId(rs.getInt("eb_user_id"));
-                user.setName(rs.getString("eb_user_name"));
-                user.setSex(rs.getString("eu_sex"));
-                user.setBirthday(rs.getDate("eu_birthday"));
-                user.setIdCode(rs.getString("eu_identity_code"));
-                user.setEmail(rs.getString("eu_email"));
-                user.setMobile(rs.getString("eu_mobile"));
-                user.setAddress(rs.getString("eb_address"));
-                user.setStatus(rs.getInt("eu_status"));
+                EbUser news = new EbUser();
+                news.setId(rs.getInt("eb_user_id"));
+                news.setName(rs.getString("eb_user_name"));
+                news.setSex(rs.getString("eu_sex"));
+                news.setBirthday(rs.getDate("eu_birthday"));
+                news.setIdCode(rs.getString("eu_identity_code"));
+                news.setEmail(rs.getString("eu_email"));
+                news.setMobile(rs.getString("eu_mobile"));
+                news.setAddress(rs.getString("eb_address"));
+                news.setStatus(rs.getInt("eu_status"));
+                news.setPassword(rs.getString("eu_password"));
 
 
                 //添加到集合中
-                userList.add(user);
+                newsList.add(news);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return userList;
+        return newsList;
     }
     public void insert(List<String> params)
     {
-        String sql="insert into ebUser(eb_user_name,eu_password,eu_sex" +
-                "eu_birthday,eu_mobile,eu_address) values(?,?,?,?,?,?)";
+        String sql="insert into ebuser(eb_user_name,eu_password,eu_sex," +
+                "eu_birthday,eu_mobile,eb_address) values(?,?,?,?,?,?)";
         this.exeucteModify(sql,params);
     }
     public void update(List<String> params)
     {
-        String sql="update ebUser set eb_user_name=? and eu_password=? and " +
-                "eu_sex=? and eu_birthday=? and eu_mobile=? and eu_address=?" +
+        String sql="update ebuser set eb_user_name=? , eu_password=? , " +
+                "eu_sex=? , eu_birthday=? , eu_mobile=? , eb_address=?" +
                 "where eb_user_id=?";
         this.exeucteModify(sql,params);
     }
     public void delete(String eb_user_id)
     {
         List<String> params=new ArrayList<String>();
-        String sql="delete from ebUser where eb_user_id=?";
+        params.add(eb_user_id);
+        String sql="delete from ebuser where eb_user_id=?";
         this.exeucteModify(sql,params);
     }
 }

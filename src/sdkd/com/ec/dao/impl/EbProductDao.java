@@ -46,10 +46,29 @@ public class EbProductDao extends BaseDao {
     }
     public void update(List<String> params)
     {
-        String sql="update ebUser set ep_name=? and ep_decription=? and " +
-                "ep_price=? and ep_stock=? and epc_id=? and epc_child_id=?" +
-                "ep_file_name=? and ep_view=? and ep_discount=? "+
-                "where eb_user_id=?";
+        String sql="update ebproduct set ep_name=?,ep_description=?,"
+                +"ep_price=?,ep_stock=?,epc_id=?,epc_child_id=?,"
+                +"ep_file_name=?,ep_view=?,ep_discount=?"
+                +"where ep_id=?";
+        this.exeucteModify(sql,params);
+    }
+    public void update(EbProduct ebProduct)
+    {
+        List<String> params=new ArrayList<String>();
+        params.add(ebProduct.getName());
+        params.add(ebProduct.getDescription());
+        params.add(ebProduct.getPrice()+"");
+        params.add(ebProduct.getStock());
+        params.add(ebProduct.getCid()+"");
+        params.add(ebProduct.getCcid()+"");
+        params.add(ebProduct.getFilename());
+        params.add(ebProduct.getView()+"");
+        params.add(ebProduct.getDiscount()+"");
+        params.add(ebProduct.getId()+"");
+        String sql="update ebproduct set ep_name=?,ep_description=?,"
+            +"ep_price=?,ep_stock=?,epc_id=?,epc_child_id=?,"
+            +"ep_file_name=?,ep_view=?,ep_discount=?"
+        +"where ep_id=?";
         this.exeucteModify(sql,params);
     }
     public void delete(String eb_user_id)

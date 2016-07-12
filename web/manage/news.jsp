@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -35,16 +34,16 @@
 		<div class="box">
 			<dl>
 				<dt>用户管理</dt>
-				<dd><em><a href="user-add.jsp">新增</a></em><a href="user.do?action=userList">用户管理</a></dd>
+				<dd><em><a href="user-add.jsp">新增</a></em><a href="user.jsp">用户管理</a></dd>
 				<dt>商品信息</dt>
-				<dd><em><a href="productClass-add.jsp">新增</a></em><a href="proCategory.do?action=productClass-List">分类管理</a></dd>
-				<dd><em><a href="product-add.jsp">新增</a></em><a href="product.do?action=manageList">商品管理</a></dd>
+				<dd><em><a href="productClass-add.jsp">新增</a></em><a href="productClass.jsp">分类管理</a></dd>
+				<dd><em><a href="product-add.jsp">新增</a></em><a href="product.jsp">商品管理</a></dd>
 				<dt>订单管理</dt>
 				<dd><a href="order.jsp">订单管理</a></dd>
 				<dt>留言管理</dt>
 				<dd><a href="guestbook.jsp">留言管理</a></dd>
 				<dt>新闻管理</dt>
-				<dd><em><a href="news-add.jsp">新增</a></em><a href="news.do?action=newsList">新闻管理</a></dd>
+				<dd><em><a href="news-add.jsp">新增</a></em><a href="news.jsp">新闻管理</a></dd>
 			</dl>
 		</div>
 	</div>
@@ -58,10 +57,10 @@
 					<th>操作</th>
 				</tr>
 
-				<c:forEach var="news"  items="${list}">
+				<c:forEach var="new" items="${news-List}">
 					<tr>
-						<td class="first w4 c">${news.enId}</td>
-						<td class="w1 c">${news.enTitle}</td>
+						<td class="first w4 c">${new.enId}</td>
+						<td class="w1 c">${new.enTitle}</td>
 						<td class="w1 c"><a href="manage/news-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
 					</tr>
 				</c:forEach>

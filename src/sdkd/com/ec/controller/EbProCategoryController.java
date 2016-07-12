@@ -29,7 +29,7 @@ public class EbProCategoryController extends HttpServlet {
     {
         EbProCategoryDao proCategoryDao = new EbProCategoryDao();
         List<EbProCategory> list = proCategoryDao.getProCategory();
-        request.setAttribute("proCategoryList1",list);
+        request.setAttribute("proCategory-List",list);
         request.getRequestDispatcher("/manage/productClass.jsp").forward(request,response);
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
