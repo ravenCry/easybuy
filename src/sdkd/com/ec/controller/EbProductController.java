@@ -44,6 +44,13 @@ public class EbProductController extends HttpServlet {
         request.setAttribute("ebProduct",ebProduct);
         request.getRequestDispatcher("/product-view.jsp").forward(request,response);
     }
+    public void allList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        EbProductDao productDao = new EbProductDao();
+        List<EbProduct> list =productDao.getProduct("select * from ebproduct",null);
+        request.setAttribute("productList",list);
+        request.getRequestDispatcher("/manage/product.jsp").forward(request,response);
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
@@ -61,6 +68,10 @@ public class EbProductController extends HttpServlet {
         else if("epc_child_id".equals(action))
         {
             cateList(request,response);
+        }
+        else if("manageList".equals(action))
+        {
+            allList(request,response);
         }
         else
         {
