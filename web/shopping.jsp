@@ -48,7 +48,7 @@
 </div>
 <div class="wrap">
 	<div id="shopping">
-		<form action="shopping-result.jsp">
+		<form action="order.do">
 			<table>
 				<tr>
 					<th>商品名称</th>

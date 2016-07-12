@@ -75,4 +75,11 @@ public class EbShoppingCarDao extends BaseDao{
         String sql="delete from ebshoppingcar where esp_id = ?";
         this.exeucteModify(sql,params);
     }
+    public void deleteMyShoppingCarByUserId(String user_id)
+    {
+        List<String> params=new ArrayList<String>();
+        params.add(user_id);
+        String sql="delete from ebshoppingcar where eb_user_id = ?";
+        this.exeucteModify(sql,params);
+    }
 }

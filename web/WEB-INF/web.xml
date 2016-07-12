@@ -67,6 +67,14 @@
         <servlet-name>EbShoppingController</servlet-name>
         <url-pattern>/shopping.do</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>EbOrderController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.EbOrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EbOrderController</servlet-name>
+        <url-pattern>/order.do</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>all.do</welcome-file>
     </welcome-file-list>
