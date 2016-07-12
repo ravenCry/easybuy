@@ -36,7 +36,36 @@ public class EbProductController extends HttpServlet {
         ebProduct.setView(ebProduct.getView()+1);
         new EbProductDao().update(ebProduct);
         request.setAttribute("ebProduct",ebProduct);
+
+        int ids = Integer.parseInt(id);
+
+        //jinqiliulan
+        recent(request,ebProduct,ids);
+
         request.getRequestDispatcher("/product-view.jsp").forward(request,response);
+    }
+
+    public void recent(HttpServletRequest request, EbProduct ebProduct, int id) throws ServletException, IOException
+    {
+        List<EbProduct> recentList = (List<EbProduct>)request.getSession().getAttribute("recent");
+        if(recentList==null){
+            recentList=new ArrayList<EbProduct>();
+        }else{
+            for(EbProduct pro:recentList){
+                if(pro.getId()==id){
+                    // System.out.println(pro.getName()+"****");
+                    recentList.remove(pro);
+                }
+            }
+        }
+        recentList.add(ebProduct);
+        if(recentList.size()>5)
+        {
+            //System.out.println(recentList.get(0).getName());
+            recentList.remove(0);
+
+        }
+        request.getSession().setAttribute("recent",recentList);
     }
     public void cateList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

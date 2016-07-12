@@ -67,10 +67,10 @@
 		<div class="last-view">
 			<h2>最近浏览</h2>
 			<dl class="clearfix">
-				<dt><img src="images/product/0_tiny.gif" /></dt>
-				<dd><a href="product-view.jsp">法国德菲丝松露精品巧克力500g/盒</a></dd>
-				<dt><img src="images/product/0_tiny.gif" /></dt>
-				<dd><a href="product-view.jsp">法国德菲丝松露精品巧克力500g/盒</a></dd>
+				<c:forEach var="recent" items="${recent}">
+					<dt><img src="${recent.filename}" width="54px" height="54px"/></dt>
+					<dd><a href="/pro.do?if=${recent.id}&action=detail">${recent.name}</a></dd>
+				</c:forEach>
 			</dl>
 		</div>
 	</div>
