@@ -33,6 +33,8 @@ public class EbProductController extends HttpServlet {
         param.add(id);
         List<EbProduct> list=new EbProductDao().getProduct("select * from ebproduct where ep_id = ?",param);
         EbProduct ebProduct=list.get(0);
+        ebProduct.setView(ebProduct.getView()+1);
+        new EbProductDao().update(ebProduct);
         request.setAttribute("ebProduct",ebProduct);
         request.getRequestDispatcher("/product-view.jsp").forward(request,response);
     }
