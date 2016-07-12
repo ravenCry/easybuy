@@ -33,6 +33,32 @@ public class EbUserDao extends BaseDao{
         }
         return ebUser;
     }
+    public List<EbUser> getUser(){
+        List<EbUser> userList=new ArrayList<EbUser>();
+        String sql = "select * from ebuser";
+        try {
+            ResultSet rs = this.executeSearch(sql,null);
+            while (rs.next()){
+                EbUser user = new EbUser();
+                user.setId(rs.getInt("eb_user_id"));
+                user.setName(rs.getString("eb_user_name"));
+                user.setSex(rs.getString("eu_sex"));
+                user.setBirthday(rs.getDate("eu_birthday"));
+                user.setIdCode(rs.getString("eu_identity_code"));
+                user.setEmail(rs.getString("eu_email"));
+                user.setMobile(rs.getString("eu_mobile"));
+                user.setAddress(rs.getString("eb_address"));
+                user.setStatus(rs.getInt("eu_status"));
+
+
+                //添加到集合中
+                userList.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
     public void insert(List<String> params)
     {
         String sql="insert into ebUser(eb_user_name,eu_password,eu_sex" +

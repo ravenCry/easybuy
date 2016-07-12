@@ -25,7 +25,13 @@ public class EbProCategoryController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
-
+    public void allList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        EbProCategoryDao proCategoryDao = new EbProCategoryDao();
+        List<EbProCategory> list = proCategoryDao.getProCategory();
+        request.setAttribute("proCategoryList1",list);
+        request.getRequestDispatcher("/manage/productClass.jsp").forward(request,response);
+    }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action=request.getParameter("action");
         if("manageSelect".equals(action))
@@ -43,6 +49,9 @@ public class EbProCategoryController extends HttpServlet {
         else if("managerDelete".equals(action))
         {
 
+        }
+        else if("productClass-List".equals(action)){
+            allList(request,response);
         }
         else
         {

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -34,16 +35,16 @@
 		<div class="box">
 			<dl>
 				<dt>用户管理</dt>
-				<dd><em><a href="user-add.jsp">新增</a></em><a href="user.jsp">用户管理</a></dd>
+				<dd><em><a href="user-add.jsp">新增</a></em><a href="user.do?action=userList">用户管理</a></dd>
 				<dt>商品信息</dt>
-				<dd><em><a href="productClass-add.jsp">新增</a></em><a href="productClass.jsp">分类管理</a></dd>
-				<dd><em><a href="product-add.jsp">新增</a></em><a href="product.jsp">商品管理</a></dd>
+				<dd><em><a href="productClass-add.jsp">新增</a></em><a href="proCategory.do?action=productClass-List">分类管理</a></dd>
+				<dd><em><a href="product-add.jsp">新增</a></em><a href="product.do?action=manageList">商品管理</a></dd>
 				<dt>订单管理</dt>
 				<dd><a href="order.jsp">订单管理</a></dd>
 				<dt>留言管理</dt>
 				<dd><a href="guestbook.jsp">留言管理</a></dd>
 				<dt>新闻管理</dt>
-				<dd><em><a href="news-add.jsp">新增</a></em><a href="news.jsp">新闻管理</a></dd>
+				<dd><em><a href="news-add.jsp">新增</a></em><a href="news.do?action=newsList">新闻管理</a></dd>
 			</dl>
 		</div>
 	</div>
@@ -56,16 +57,15 @@
 					<th>商品名称</th>
 					<th>操作</th>
 				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="thumb"><img src="../images/product/0_tiny.gif" /><a href="../product-view.jsp" target="_blank">铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机</a></td>
-					<td class="w1 c"><a href="product-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="thumb"><img src="../images/product/0_tiny.gif" /><a href="../product-view.jsp" target="_blank">铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机</a></td>
-					<td class="w1 c"><a href="product-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
+
+					<c:forEach var="product" items="${productList}">
+                       <tr>
+						<td class="first w4 c">${product.id}</td>
+						<td class="w1 c">${product.name}</td>
+						<td class="w1 c"><a href="manage/product-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+						   </tr>
+					</c:forEach>
+
 			</table>
 		</div>
 	</div>

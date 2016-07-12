@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -34,16 +35,16 @@
 		<div class="box">
 			<dl>
 				<dt>用户管理</dt>
-				<dd><em><a href="user-add.jsp">新增</a></em><a href="user.jsp">用户管理</a></dd>
+				<dd><em><a href="user-add.jsp">新增</a></em><a href="user.do?action=userList">用户管理</a></dd>
 				<dt>商品信息</dt>
-				<dd><em><a href="productClass-add.jsp">新增</a></em><a href="productClass.jsp">分类管理</a></dd>
-				<dd><em><a href="product-add.jsp">新增</a></em><a href="product.jsp">商品管理</a></dd>
+				<dd><em><a href="productClass-add.jsp">新增</a></em><a href="proCategory.do?action=productClass-List">分类管理</a></dd>
+				<dd><em><a href="product-add.jsp">新增</a></em><a href="product.do?action=manageList">商品管理</a></dd>
 				<dt>订单管理</dt>
 				<dd><a href="order.jsp">订单管理</a></dd>
 				<dt>留言管理</dt>
 				<dd><a href="guestbook.jsp">留言管理</a></dd>
 				<dt>新闻管理</dt>
-				<dd><em><a href="news-add.jsp">新增</a></em><a href="news.jsp">新闻管理</a></dd>
+				<dd><em><a href="news-add.jsp">新增</a></em><a href="news.do?action=newsList">新闻管理</a></dd>
 			</dl>
 		</div>
 	</div>
@@ -59,22 +60,16 @@
 					<th>手机</th>
 					<th>操作</th>
 				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="w1 c">张三丰</td>
-					<td class="w2 c">男</td>
-					<td>fengsan.zhang@prd.com</td>
-					<td class="w4 c">13888888888</td>
-					<td class="w1 c"><a href="user-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">2</td>
-					<td class="w1 c">杨二郎</td>
-					<td class="w2 c">男</td>
-					<td>fengsan.zhang@prd.com</td>
-					<td class="w4 c">13888888888</td>
-					<td class="w1 c"><a href="user-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
+				<c:forEach var="user" items="${userList1}">
+					<tr>
+						<td class="first w4 c">${user.id}</td>
+						<td class="w1 c">${user.name}</td>
+						<td class="w1 c">${user.sex}</td>
+						<td class="w1 c">${user.email}</td>
+						<td class="w1 c">${user.mobile}</td>
+						<td class="w1 c"><a href="manage/user-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+					</tr>
+				</c:forEach>
 			</table>
 		</div>
 	</div>
