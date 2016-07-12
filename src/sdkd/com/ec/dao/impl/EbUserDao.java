@@ -36,20 +36,20 @@ public class EbUserDao extends BaseDao {
     }
     public List<EbUser> getUser(){
         List<EbUser> newsList = new ArrayList<EbUser>();
-        String sql = "select * from ebnews";
+        String sql = "select * from ebuser";
         try {
             ResultSet rs = this.executeSearch(sql,null);
             while (rs.next()){
                 EbUser news = new EbUser();
-                news.setId(rs.getInt("en_id"));
-                news.setName(rs.getString("en_title"));
-                news.setSex(rs.getString("en_title"));
-                news.setBirthday(rs.getDate("en_title"));
-                news.setIdCode(rs.getString("en_title"));
-                news.setEmail(rs.getString("en_title"));
-                news.setMobile(rs.getString("en_title"));
-                news.setAddress(rs.getString("en_title"));
-                news.setStatus(rs.getInt("en_id"));
+                news.setId(rs.getInt("eb_user_id"));
+                news.setName(rs.getString("eb_user_name"));
+                news.setSex(rs.getString("eu_sex"));
+                news.setBirthday(rs.getDate("eu_birthday"));
+                news.setIdCode(rs.getString("eu_identity_code"));
+                news.setEmail(rs.getString("eu_email"));
+                news.setMobile(rs.getString("eu_mobile"));
+                news.setAddress(rs.getString("eb_address"));
+                news.setStatus(rs.getInt("eu_status"));
 
 
                 //添加到集合中

@@ -32,7 +32,7 @@ public class EbUserController extends HttpServlet {
     {
         EbUserDao userDao = new EbUserDao();
         List<EbUser> list = userDao.getUser();
-        request.setAttribute("user-List",list);
+        request.setAttribute("user_List",list);
         request.getRequestDispatcher("/manage/user.jsp").forward(request,response);
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
