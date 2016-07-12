@@ -59,22 +59,18 @@
 					<th>手机</th>
 					<th>操作</th>
 				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="w1 c">张三丰</td>
-					<td class="w2 c">男</td>
-					<td>fengsan.zhang@prd.com</td>
-					<td class="w4 c">13888888888</td>
-					<td class="w1 c"><a href="user-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">2</td>
-					<td class="w1 c">杨二郎</td>
-					<td class="w2 c">男</td>
-					<td>fengsan.zhang@prd.com</td>
-					<td class="w4 c">13888888888</td>
-					<td class="w1 c"><a href="user-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
+				<c:forEach var="user" items="${user-List}">
+					<tr>
+						<td class="first w4 c">${user.id}</td>
+						<td class="w1 c">${user.name}</td>
+						<td class="w1 c">${user.sex}</td>
+						<td class="w1 c">${user.email}</td>
+						<td class="w1 c">${user.mobile}</td>
+
+
+						<td class="w1 c"><a href="manage/user-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+					</tr>
+				</c:forEach>
 			</table>
 		</div>
 	</div>

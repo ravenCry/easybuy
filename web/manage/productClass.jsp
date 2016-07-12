@@ -56,36 +56,15 @@
 					<th>分类名称</th>
 					<th>操作</th>
 				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td>大类</td>
-					<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="childClass">小类</td>
-					<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="childClass">小类</td>
-					<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td>大类</td>
-					<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="childClass">小类</td>
-					<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="childClass">小类</td>
-					<td class="w1 c"><a href="productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
+
+
+				<c:forEach var="productClass" items="${proCategory-Listt}">
+					<tr>
+						<td class="first w4 c">${productClass.id}</td>
+						<td class="w1 c">${productClass.name}</td>
+						<td class="w1 c"><a href="manage/productClass-modify.jsp">修改</a> <a href="javascript:Delete(1);">删除</a></td>
+					</tr>
+				</c:forEach>
 			</table>
 		</div>
 	</div>

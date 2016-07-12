@@ -23,6 +23,13 @@ public class EbNewsController extends HttpServlet {
         //跳转
         request.getRequestDispatcher("/product.do").forward(request,response);
     }
+    public void allList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        EbNewsDao newsDao = new EbNewsDao();
+        List<EbNews> list = newsDao.getNews();
+        request.setAttribute("news-List",list);
+        request.getRequestDispatcher("/manage/news.jsp").forward(request,response);
+    }
     public void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String paramId=request.getParameter("id");
@@ -51,23 +58,14 @@ public class EbNewsController extends HttpServlet {
         {
             detail(request,response);
         }
+        else if("newsList".equals(action))
+        {
+            allList(request,response);
+        }
         else
         {
             list(request,response);
         }
 
-
-
-        /**
-         * login
-         */
-        /*EbUser user =  login();
-        request.getSession().setAttribute("user",user);*/
-        /*String paraId = request.getParameter("id");
-        if(paraId!=null && !"".equals(paraId)){
-            int id = Integer.valueOf(id);
-            EbNews news = newsDao.getNewsById(id);
-            request.setAttribute("news",news);
-        }*/
     }
 }

@@ -1,14 +1,16 @@
 package sdkd.com.ec.controller;
 
+import sdkd.com.ec.dao.impl.EbProductDao;
+import sdkd.com.ec.model.EbProduct;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import sdkd.com.ec.dao.impl.EbProductDao;
-import sdkd.com.ec.model.EbProduct;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by HellCrow on 2016/7/6.
@@ -24,16 +26,6 @@ public class EbProductController extends HttpServlet {
         request.setAttribute("productHotList",list2);
         request.getRequestDispatcher("/proCategory.do").forward(request,response);
     }
-    public void cateList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        String epc_child_id=request.getParameter("pc_id");
-        List<String> params=new ArrayList<String>();
-        params.add(epc_child_id);
-        EbProductDao productDao = new EbProductDao();
-        List<EbProduct> list =productDao.getProduct("select * from ebproduct where epc_child_id =?",params);
-        request.setAttribute("productKindList",list);
-        request.getRequestDispatcher("/product-list.jsp").forward(request,response);
-    }
     public void detail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String id=request.getParameter("id");
@@ -43,6 +35,16 @@ public class EbProductController extends HttpServlet {
         EbProduct ebProduct=list.get(0);
         request.setAttribute("ebProduct",ebProduct);
         request.getRequestDispatcher("/product-view.jsp").forward(request,response);
+    }
+    public void cateList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        String epc_child_id=request.getParameter("pc_id");
+        List<String> params=new ArrayList<String>();
+        params.add(epc_child_id);
+        EbProductDao productDao = new EbProductDao();
+        List<EbProduct> list =productDao.getProduct("select * from ebproduct where epc_child_id =?",params);
+        request.setAttribute("productKindList",list);
+        request.getRequestDispatcher("/product-list.jsp").forward(request,response);
     }
     public void allList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -65,13 +67,13 @@ public class EbProductController extends HttpServlet {
         {
             detail(request,response);
         }
-        else if("epc_child_id".equals(action))
-        {
-            cateList(request,response);
-        }
         else if("manageList".equals(action))
         {
             allList(request,response);
+        }
+        else if("epc_child_id".equals(action))
+        {
+            cateList(request,response);
         }
         else
         {
