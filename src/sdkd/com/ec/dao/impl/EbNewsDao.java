@@ -51,12 +51,12 @@ public class EbNewsDao extends BaseDao {
     public void insert(List<String> params)
     {
         String sql="insert into ebnews(en_title,en_content"+
-                "en_create_time ) values(?,?,?)";
+                " ) values(?,?)";
         this.exeucteModify(sql,params);
     }
     public void update(List<String> params)
     {
-        String sql="update ebnews set en_title=? and en_content=? and " +
+        String sql="update ebnews set en_title=? , en_content=? , " +
                 "en_create_time" +
                 "where en_id=?";
         this.exeucteModify(sql,params);

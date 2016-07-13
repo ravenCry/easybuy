@@ -39,9 +39,9 @@ public class EbProductDao extends BaseDao {
     }
     public void insert(List<String> params)
     {
-        String sql="insert into ebproduct(ep_name,ep_decription,ep_price" +
-                "ep_stock,epc_id,epc_child_id"+
-        "ep_file_name,ep_view,ep_discount) values(?,?,?,?,?,?,?,?,?)";
+        String sql="insert into ebproduct(ep_name,ep_price," +
+                "ep_stock,epc_id,epc_child_id," +
+                "ep_file_name,ep_view,ep_discount) values(?,?,?,?,?,?,0,0)";
         this.exeucteModify(sql,params);
     }
     public void update(List<String> params)
@@ -65,15 +65,16 @@ public class EbProductDao extends BaseDao {
         params.add(ebProduct.getView()+"");
         params.add(ebProduct.getDiscount()+"");
         params.add(ebProduct.getId()+"");
-        String sql="update ebproduct set ep_name=?,ep_description=?,"
+        String sql="update ebproduct set ep_name=?,"
             +"ep_price=?,ep_stock=?,epc_id=?,epc_child_id=?,"
-            +"ep_file_name=?,ep_view=?,ep_discount=?"
+            +"ep_file_name=?"
         +"where ep_id=?";
         this.exeucteModify(sql,params);
     }
-    public void delete(String eb_user_id)
+    public void delete(String ep_id)
     {
         List<String> params=new ArrayList<String>();
+        params.add(ep_id);
         String sql="delete from ebproduct where ep_id=?";
         this.exeucteModify(sql,params);
     }

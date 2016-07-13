@@ -1,5 +1,6 @@
 package sdkd.com.ec.controller;
 
+import sdkd.com.ec.dao.impl.EbNewsDao;
 import sdkd.com.ec.dao.impl.EbProductDao;
 import sdkd.com.ec.model.EbProduct;
 
@@ -87,7 +88,57 @@ public class EbProductController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
+    public void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String ep_name=request.getParameter("productName");
+        String epc_id=request.getParameter("parentId");
+        String ep_file_name=request.getParameter("photo");
+        String ep_price=request.getParameter("productPrice");
+        String epc_child_id=null;
+        String ep_stock=request.getParameter("productStock");
+        List<String> params=new ArrayList<String>();
+        params.add(ep_name);
+        params.add(ep_price);
+        params.add(ep_stock);
+        params.add(epc_id);
+        params.add(epc_child_id);
+        params.add(ep_file_name);
+        //System.out.println(ep_name+","+ep_price+","+ep_stock+","+epc_id+","+epc_child_id+","+ep_file_name);
+        new EbNewsDao().insert(params);
+        request.getRequestDispatcher("/manage/manage-result.jsp").forward(request,response);
+    }
+    public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String ep_id=request.getParameter("productId");
+        String ep_name=request.getParameter("productName");
+        String epc_id=request.getParameter("parentId");
+        String ep_file_name=request.getParameter("photo");
+        String ep_price=request.getParameter("productPrice");
+        String epc_child_id=null;
+        String ep_stock=request.getParameter("productStock");
+        List<String> params=new ArrayList<String>();
+        params.add(ep_name);
+        params.add(ep_price);
+        params.add(ep_stock);
+        params.add(epc_id);
+        params.add(epc_child_id);
+        params.add(ep_file_name);
+        params.add(ep_id);
+        new EbNewsDao().update(params);
+    }
+    public void jump2modify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        String ep_id=request.getParameter("ep_id");
+        String ep_name=request.getParameter("ep_name");
+        request.setAttribute("ep_id",ep_id);
+        request.setAttribute("ep_name",ep_name);
+        request.getRequestDispatcher("/manage/product-modify.jsp").forward(request,response);
 
+
+    }
+    public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        String productId=request.getParameter("productId");
+        new EbProductDao().delete(productId);
+    }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action=request.getParameter("action");
         if("list".equals(action))
@@ -106,9 +157,32 @@ public class EbProductController extends HttpServlet {
         {
             cateList(request,response);
         }
+        else if("delete".equals(action))
+        {
+            delete(request,response);
+            allList(request,response);
+        }
+        else if("jump2modify".equals(action))
+        {
+            jump2modify(request,response);
+        }
         else
         {
-            list(request,response);
+            request.setCharacterEncoding("utf-8");
+            response.setCharacterEncoding("utf-8");
+            String submit=request.getParameter("submit");
+            if("更新".equals(submit))
+            {
+                update(request,response);
+                allList(request,response);
+            }
+            else if("添加".equals(submit))
+            {
+                insert(request,response);
+                allList(request,response);
+            }
+            else
+                list(request,response);
         }
     }
 }

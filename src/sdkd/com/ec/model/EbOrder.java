@@ -43,10 +43,29 @@ public class EbOrder {
     public void setEo_type(String eo_type) {
         this.eo_type = eo_type;
     }
-
     int eo_id;
     EbUser ebUser;
     double eo_cost;
     String eo_status;
     String eo_type;
+
+    public String getEb_user_name() {
+        return eb_user_name;
+    }
+
+    public void setEb_user_name(String eb_user_name) {
+        this.eb_user_name = eb_user_name;
+    }
+
+    String eb_user_name;
+
+    public String getEb_address() {
+        return eb_address;
+    }
+
+    public void setEb_address(String eb_address) {
+        this.eb_address = eb_address;
+    }
+
+    String eb_address;
 }

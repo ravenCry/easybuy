@@ -42,7 +42,7 @@ public class EbUserController extends HttpServlet {
         new EbUserDao().delete(userId);
     }
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
+        {
         String eb_user_id=request.getParameter("userName");
         String eb_user_name=request.getParameter("name");
         String eu_password=request.getParameter("passWord");

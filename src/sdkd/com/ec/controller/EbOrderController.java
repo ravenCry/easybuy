@@ -56,15 +56,47 @@ public class EbOrderController extends HttpServlet {
     {
         request.getRequestDispatcher("shopping-result.jsp").forward(request,response);
     }
+    public void allList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EbOrderDao orderDao = new EbOrderDao();
+        List<EbOrder> list = orderDao.getOrder();
+        request.setAttribute("orderList", list);
+        request.getRequestDispatcher("/manage/order.jsp").forward(request, response);
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
+    public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String eo_id=request.getParameter("orderId");
+        String eb_user_name=request.getParameter("name");
+        List<String> params = new ArrayList<String>();
+        params.add(eo_id);
+        params.add(eb_user_name);
+        new EbOrderDao().update(params);
+
+
+    }
+    public void jump2modify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String eo_id=request.getParameter("eo_id");
+        String eb_user_name=request.getParameter("eb_user_name");
+        request.setAttribute("orderId",eo_id);
+        request.setAttribute("eb_user_name",eb_user_name);
+
+        request.getRequestDispatcher("/manage/order-modify.jsp").forward(request,response);
+    }
+    public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        String orderID=request.getParameter("orderID");
+        new EbOrderDao().delete(orderID);
+    }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action=request.getParameter("action");
         if("singleBuy".equals(action))
         {
             singleBuy(request,response);
+        }
+        else if("manageList".equals(action)){
+            allList(request,response);
         }
         else
         {

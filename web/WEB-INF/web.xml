@@ -83,14 +83,6 @@
         <servlet-name>EbOrderController</servlet-name>
         <url-pattern>/order.do</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>EbUserController</servlet-name>
-        <servlet-class>sdkd.com.ec.controller.EbUserController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EbUserController</servlet-name>
-        <url-pattern>/user.do</url-pattern>
-    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>all.do</welcome-file>
     </welcome-file-list>
