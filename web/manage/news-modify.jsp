@@ -16,8 +16,12 @@
 			<form action="news.do">
 				<table class="form">
 					<tr>
+						<td class="field">新闻编号：</td>
+						<td><input type="text" class="text" name="id" value="${en_id} "  readonly="readonly"/></td>
+					</tr>
+					<tr>
 						<td class="field">新闻标题：</td>
-						<td><input type="text" class="text" name="title" value="" /></td>
+						<td><input type="text" class="text" name="title" value="${en_title}" /></td>
 					</tr>
 					<tr>
 						<td class="field">新闻内容：</td>

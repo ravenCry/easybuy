@@ -102,8 +102,8 @@ public class EbProductController extends HttpServlet {
         params.add(epc_id);
         params.add(epc_child_id);
         params.add(ep_file_name);
-        //System.out.println(ep_name+","+ep_price+","+ep_stock+","+epc_id+","+epc_child_id+","+ep_file_name);
-        new EbNewsDao().insert(params);
+        System.out.println(ep_name+","+ep_price+","+ep_stock+","+epc_id+","+epc_child_id+","+ep_file_name);
+        new EbProductDao().insert(params);
         request.getRequestDispatcher("/manage/manage-result.jsp").forward(request,response);
     }
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -122,7 +122,7 @@ public class EbProductController extends HttpServlet {
         params.add(epc_child_id);
         params.add(ep_file_name);
         params.add(ep_id);
-        new EbNewsDao().update(params);
+        new EbProductDao().update(params);
     }
     public void jump2modify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

@@ -46,9 +46,9 @@ public class EbProductDao extends BaseDao {
     }
     public void update(List<String> params)
     {
-        String sql="update ebproduct set ep_name=?,ep_description=?,"
+        String sql="update ebproduct set ep_name=?,"
                 +"ep_price=?,ep_stock=?,epc_id=?,epc_child_id=?,"
-                +"ep_file_name=?,ep_view=?,ep_discount=?"
+                +"ep_file_name=? "
                 +"where ep_id=?";
         this.exeucteModify(sql,params);
     }

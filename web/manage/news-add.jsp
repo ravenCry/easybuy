@@ -13,7 +13,7 @@
 	<div class="main">
 		<h2>添加新闻</h2>
 		<div class="manage">
-			<form action="news.do">
+			<form action="/news.do">
 				<table class="form">
 					<tr>
 						<td class="field">新闻标题：</td>

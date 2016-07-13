@@ -12,9 +12,8 @@ import java.util.List;
  * Created by SDUST-132 on 2016/7/6.
  */
 public class EbNewsDao extends BaseDao {
-    public List<EbNews> getNews(){
+    public List<EbNews> getNews(String sql){
         List<EbNews> newsList = new ArrayList<EbNews>();
-        String sql = "select * from ebnews order by en_create_time desc limit 0,7";
         try {
             ResultSet rs = this.executeSearch(sql,null);
             while (rs.next()){
@@ -56,14 +55,14 @@ public class EbNewsDao extends BaseDao {
     }
     public void update(List<String> params)
     {
-        String sql="update ebnews set en_title=? , en_content=? , " +
-                "en_create_time" +
+        String sql="update ebnews set en_title=? , en_content=? " +
                 "where en_id=?";
         this.exeucteModify(sql,params);
     }
     public void delete(String en_id)
     {
         List<String> params=new ArrayList<String>();
+        params.add(en_id);
         String sql="delete from ebnews where en_id=?";
         this.exeucteModify(sql,params);
     }

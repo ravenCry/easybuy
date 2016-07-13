@@ -19,7 +19,7 @@ public class EbNewsController extends HttpServlet {
     EbNewsDao newsDao = new EbNewsDao();
 
     public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<EbNews> list = newsDao.getNews();
+        List<EbNews> list = newsDao.getNews("select * from ebnews order by en_create_time desc limit 0,7");
         request.setAttribute("newsList", list);
 
         //跳转
@@ -28,7 +28,7 @@ public class EbNewsController extends HttpServlet {
 
     public void allList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EbNewsDao newsDao = new EbNewsDao();
-        List<EbNews> list = newsDao.getNews();
+        List<EbNews> list = newsDao.getNews("select * from ebnews");
         request.setAttribute("news_List", list);
         request.getRequestDispatcher("/manage/news.jsp").forward(request, response);
     }
@@ -66,12 +66,13 @@ public class EbNewsController extends HttpServlet {
     }
 
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String en_id=request.getParameter("id");
         String en_title = request.getParameter("title");
         String en_content = request.getParameter("content");
         List<String> params = new ArrayList<String>();
         params.add(en_title);
         params.add(en_content);
+        params.add(en_id);
         new EbNewsDao().update(params);
     }
 
@@ -112,7 +113,7 @@ public class EbNewsController extends HttpServlet {
             request.setCharacterEncoding("utf-8");
             response.setCharacterEncoding("utf-8");
             String submit = request.getParameter("submit");
-            if ("更新".equals(submit)) {
+            if ("修改".equals(submit)) {
                 update(request, response);
                 allList(request, response);
             } else if ("添加".equals(submit)) {

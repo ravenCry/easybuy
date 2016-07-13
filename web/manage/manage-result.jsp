@@ -21,7 +21,7 @@
 						<p>恭喜：操作成功！</p>
 						<p>正在进入首页...</p>
 						<script type="text/javascript">
-							setTimeout("location.href='index.jsp'", 1000);
+							setTimeout("location.href='/manage/index.jsp'", 1000);
 						</script>
 					</div>
 				</div>
