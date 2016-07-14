@@ -41,12 +41,10 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<div class="button"><input type="submit" value="" /></div>
+			<div class="button"><input type="submit" value="123" /></div>
 		</form>
 	</div>
-	<script type="text/javascript">
-		document.write("Cookie中记录的购物车商品ID："+ getCookie("product") + "，可以在动态页面中进行读取");
-	</script>
+
 </div>
 <div id="footer">
 	Copyright &copy; 2010 北风教育 All Rights Reserved. 京ICP证1000001号

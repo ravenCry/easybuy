@@ -72,14 +72,17 @@ public class EbOrderDao extends BaseDao{
     }
     public void update(List<String> params)
     {
-        String sql="update eborde set eb_user_id=? , eb_user_name=?  " +
+        String sql="update eborder set eb_user_name=?  ,eo_status=?" +
                 "where eo_id=?";
         this.exeucteModify(sql,params);
     }
     public void delete(String eo_id)
     {
         List<String> params=new ArrayList<String>();
-        String sql="delete from eborder where eo_id=?";
+        params.add(eo_id);
+        String sql="delete from eborderdetail where eo_id=?";
+        this.exeucteModify(sql,params);
+        sql="delete from eborder where eo_id=?";
         this.exeucteModify(sql,params);
     }
 }

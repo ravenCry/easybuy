@@ -17,15 +17,15 @@
 				<table class="form">
 					<tr>
 						<td class="field">订单ID：</td>
-						<td><input type="text" class="text" name="orderId" value="100000" readonly="readonly" /></td>
+						<td><input type="text" class="text" name="orderId" value="${orderId}" readonly="readonly" /></td>
 					</tr>
 					<tr>
 						<td class="field">订购人姓名：</td>
-						<td><input type="text" class="text" name="name" value="张三" /></td>
+						<td><input type="text" class="text" name="name" value="${eb_user_name}" /></td>
 					</tr>
 					<tr>
-						<td class="field">...：</td>
-						<td>...</td>
+						<td class="field">订单状态：</td>
+						<td><input type="text" class="text" name="status" value="${eo_status}" /></td>
 					</tr>
 					<tr>
 						<td></td>

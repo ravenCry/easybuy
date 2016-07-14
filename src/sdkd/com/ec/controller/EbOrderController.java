@@ -69,9 +69,11 @@ public class EbOrderController extends HttpServlet {
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String eo_id=request.getParameter("orderId");
         String eb_user_name=request.getParameter("name");
+        String eo_status=request.getParameter("status");
         List<String> params = new ArrayList<String>();
-        params.add(eo_id);
         params.add(eb_user_name);
+        params.add(eo_status);
+        params.add(eo_id);
         new EbOrderDao().update(params);
 
 
@@ -98,9 +100,26 @@ public class EbOrderController extends HttpServlet {
         else if("manageList".equals(action)){
             allList(request,response);
         }
+        else if("jump2modify".equals(action))
+        {
+            jump2modify(request,response);
+        }
         else
         {
-            shoppingCarBuy(request,response);
+            request.setCharacterEncoding("utf-8");
+            response.setCharacterEncoding("utf-8");
+            String submit = request.getParameter("submit");
+            if ("更新".equals(submit)) {
+                update(request, response);
+                allList(request, response);
+            } else if ("添加".equals(submit)) {
+                //insert(request, response);
+                allList(request, response);
+            }
+            else
+            {
+                shoppingCarBuy(request,response);
+            }
         }
     }
 }
