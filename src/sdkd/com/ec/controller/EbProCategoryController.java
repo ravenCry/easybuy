@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +20,10 @@ import java.util.List;
 public class EbProCategoryController extends HttpServlet {
     public void select(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        HttpSession session=request.getSession();
         EbProCategoryDao proCategoryDao = new EbProCategoryDao();
         List<EbProCategory> list = proCategoryDao.getProCategory();
-        request.setAttribute("proCategoryList",list);
+        session.setAttribute("proCategoryList",list);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -37,17 +39,24 @@ public class EbProCategoryController extends HttpServlet {
        String epc_parent_id=request.getParameter("parentId");
         String epc_name=request.getParameter("className");
         List<String> params=new ArrayList<String>();
-        params.add(epc_parent_id);
         params.add(epc_name);
+        if("0".equals(epc_parent_id))
+        {
+            params.add(null);
+        }
+        else
+        {
+            params.add(epc_parent_id);
+        }
         new EbProCategoryDao().insert(params);
 
     }
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String epc_parent_id=request.getParameter("parentId");
+        String epc_id=request.getParameter("epcId");
         String epc_name=request.getParameter("className");
         List<String> params=new ArrayList<String>();
-        params.add(epc_parent_id);
         params.add(epc_name);
+        params.add(epc_id);
         new EbProCategoryDao().update(params);
     }
     public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -62,8 +71,6 @@ public class EbProCategoryController extends HttpServlet {
         request.setAttribute("epc_id",epc_id);
         request.setAttribute("epc_name",epc_name);
         request.getRequestDispatcher("/manage/productClass-modify.jsp").forward(request,response);
-
-
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action=request.getParameter("action");
@@ -103,11 +110,13 @@ public class EbProCategoryController extends HttpServlet {
             if("更新".equals(submit))
             {
                 update(request,response);
+                select(request,response);
                 allList(request,response);
             }
             else if("添加".equals(submit))
             {
                 insert(request,response);
+                select(request,response);
                 allList(request,response);
             }
             else {

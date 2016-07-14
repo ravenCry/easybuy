@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,13 +23,17 @@
 					<tr>
 						<td class="field">所属分类：</td>
 						<td>
-							<select name="parentId">
-								<option value="1">电器</option>
-								<option value="3">├ 电器</option>
-								<option value="3">└ 电器</option>
-								<option value="2">衣服</option>
-								<option value="3">├ 电器</option>
-								<option value="3">└ 电器</option>
+							<select name="epc_id">
+								<c:forEach var="proCategory" items="${proCategoryList}">
+									<c:if test="${proCategory.parentId==-1}">
+										<option value="${proCategory.id}">${proCategory.name}</option>
+										<c:forEach var="proCategoryChild" items="${proCategoryList}">
+											<c:if test="${proCategoryChild.parentId==proCategory.id}">
+												<option value="${proCategoryChild.parentId},${proCategoryChild.id}">--${proCategoryChild.name}</option>
+											</c:if>
+										</c:forEach>
+									</c:if>
+								</c:forEach>
 							</select>
 						</td>
 					</tr>
@@ -39,10 +44,6 @@
 					<tr>
 						<td class="field">商品价格：</td>
 						<td><input type="text" class="text tiny" name="productPrice" /> 元</td>
-					</tr>
-					<tr>
-						<td class="field">品牌：</td>
-						<td><input type="text" class="text" name="productName" /></td>
 					</tr>
 					<tr>
 						<td class="field">库存：</td>

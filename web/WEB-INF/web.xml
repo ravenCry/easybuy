@@ -83,6 +83,14 @@
         <servlet-name>EbOrderController</servlet-name>
         <url-pattern>/order.do</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>EbWordController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.EbWordController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EbWordController</servlet-name>
+        <url-pattern>/word.do</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>all.do</welcome-file>
     </welcome-file-list>

@@ -5,10 +5,12 @@ import sdkd.com.ec.dao.impl.EbProductDao;
 import sdkd.com.ec.model.EbProduct;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,7 @@ import java.util.List;
  * Created by HellCrow on 2016/7/6.
  */
 @WebServlet(name = "EbProductController")
+@MultipartConfig(location = "G:\\story\\easybuy\\web\\images")
 public class EbProductController extends HttpServlet {
     public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -90,11 +93,24 @@ public class EbProductController extends HttpServlet {
     }
     public void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String ep_name=request.getParameter("productName");
-        String epc_id=request.getParameter("parentId");
-        String ep_file_name=request.getParameter("photo");
+        Part part=request.getPart("photo");
+        String header=part.getHeader("Content-Disposition");
+        String ep_file_name=header.substring(header.indexOf("filename=\"")+10,header.lastIndexOf("\""));
+        part.write(ep_file_name);
         String ep_price=request.getParameter("productPrice");
+        String epc_id=request.getParameter("epc_id");
         String epc_child_id=null;
         String ep_stock=request.getParameter("productStock");
+        String []epc=epc_id.split(",");
+        if(epc.length==1)
+        {
+            epc_id=epc[0];
+        }
+        else
+        {
+            epc_id=epc[0];
+            epc_child_id=epc[1];
+        }
         List<String> params=new ArrayList<String>();
         params.add(ep_name);
         params.add(ep_price);
@@ -102,19 +118,28 @@ public class EbProductController extends HttpServlet {
         params.add(epc_id);
         params.add(epc_child_id);
         params.add(ep_file_name);
-        System.out.println(ep_name+","+ep_price+","+ep_stock+","+epc_id+","+epc_child_id+","+ep_file_name);
         new EbProductDao().insert(params);
         request.getRequestDispatcher("/manage/manage-result.jsp").forward(request,response);
     }
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String ep_id=request.getParameter("productId");
         String ep_name=request.getParameter("productName");
-        String epc_id=request.getParameter("parentId");
+        String epc_id=request.getParameter("epc_id");
         String ep_file_name=request.getParameter("photo");
         String ep_price=request.getParameter("productPrice");
         String epc_child_id=null;
         String ep_stock=request.getParameter("productStock");
         List<String> params=new ArrayList<String>();
+        String []epc=epc_id.split(",");
+        if(epc.length==1)
+        {
+            epc_id=epc[0];
+        }
+        else
+        {
+            epc_id=epc[0];
+            epc_child_id=epc[1];
+        }
         params.add(ep_name);
         params.add(ep_price);
         params.add(ep_stock);

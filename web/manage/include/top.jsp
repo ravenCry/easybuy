@@ -16,12 +16,12 @@
     <div class="help"><a href="/all.do">返回前台页面</a></div>
     <div class="navbar">
         <ul class="clearfix">
-            <li class="current"><a href="/all.do">首页</a></li>
-            <li><a href="/manage/user.jsp">用户</a></li>
-            <li><a href="/manage/product.jsp">商品</a></li>
-            <li><a href="/manage/order.jsp">订单</a></li>
-            <li><a href="/manage/guestbook.jsp">留言</a></li>
-            <li><a href="/manage/news.jsp">新闻</a></li>
+            <li class="current"><a href="/manage/index.jsp">首页</a></li>
+            <li><a href="/user.do?action=userList">用户</a></li>
+            <li><a href="/product.do?action=manageList">商品</a></li>
+            <li><a href="/order.do?action=manageList">订单</a></li>
+            <li><a href="/word.do?action=wordList">留言</a></li>
+            <li><a href="/news.do?action=newsList">新闻</a></li>
         </ul>
     </div>
 </div>

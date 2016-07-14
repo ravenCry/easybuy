@@ -17,6 +17,7 @@
     <div class="help"><a href="#" class="shopping">购物车</a>
         <c:if test="${currentUser==null}"><a href="login.jsp">登录</a></c:if>
         <c:if test="${currentUser!=null}">${currentUser.name}</c:if>
+        <c:if test="${currentUser.status==2}"><a href="/manage/index.jsp">返回后台页面</a></c:if>
         <a href="register.jsp">注册</a><a href="guestbook.jsp">留言</a></div>
     <div class="navbar">
         <ul class="clearfix">

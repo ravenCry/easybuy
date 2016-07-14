@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -13,21 +14,24 @@
 	<div class="main">
 		<h2>添加分类</h2>
 		<div class="manage">
-			<form action="/product.do">
+			<form action="/proCategory.do">
 				<table class="form">
 					<tr>
 						<td class="field">父分类：</td>
 						<td>
 							<select name="parentId">
 								<option value="0" selected="selected">根栏目</option>
-								<option value="1">电器</option>
-								<option value="2">衣服</option>
+								<c:forEach var="proCategory" items="${proCategoryList}">
+									<c:if test="${proCategory.parentId==-1}">
+										<option value="${proCategory.id}">${proCategory.name}</option>
+									</c:if>
+									</c:forEach>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<td class="field">分类名称：</td>
-						<td><input type="text" class="text" name="className" value="电脑" /></td>
+						<td><input type="text" class="text" name="className"/></td>
 					</tr>
 					<tr>
 						<td></td>

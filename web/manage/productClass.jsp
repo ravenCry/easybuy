@@ -20,18 +20,25 @@
 					<th>分类名称</th>
 					<th>操作</th>
 				</tr>
-
-
-				<c:forEach var="productClass" items="${proCategory_List}">
-					<tr>
-						<td class="first w4 c">${productClass.id}</td>
-						<td class="w1 c">${productClass.name}</td>
-						<td class="w1 c"><a href="proCategory.do?
-						action=jump2modify&epc_id=${productClass.id}&
-						epc_name=${productClass.name}
-						">修改</a> <a href="proCategory.do?action=delete&proId=${productClass.id}">删除</a></td>
-
-					</tr>
+				<c:forEach var="proCategory" items="${proCategory_List}">
+					<c:if test="${proCategory.parentId==-1}">
+						<tr>
+						    <td class="first w4 c">${proCategory.id}</td>
+						      <td>${proCategory.name}</td>
+						    <td class="w1 c"><a href="/proCategory.do?action=jump2modify&epc_id=${proCategory.id}&epc_name=${proCategory.name}
+						    ">修改</a> <a href="proCategory.do?action=delete&proId=${proCategory.id}">删除</a></td>
+						</tr>
+						<c:forEach var="proCategoryChild" items="${proCategory_List}">
+							<c:if test="${proCategoryChild.parentId==proCategory.id}">
+								<tr>
+									<td class="first w4 c">${proCategoryChild.id}</td>
+									<td class="childClass">${proCategoryChild.name}</td>
+									<td class="w1 c"><a href="/proCategory.do?action=jump2modify&epc_id=${proCategoryChild.id}&epc_name=${proCategoryChild.name}
+						    ">修改</a> <a href="proCategory.do?action=delete&proId=${proCategoryChild.id}">删除</a></td>
+								</tr>
+							</c:if>
+						</c:forEach>
+					</c:if>
 				</c:forEach>
 			</table>
 		</div>

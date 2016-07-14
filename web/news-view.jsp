@@ -13,31 +13,7 @@
 </div>
 <div id="main" class="wrap">
 	<div class="left-side">
-		<div class="news-list">
-			<h4>最新公告</h4>
-			<ul>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-			</ul>
-		</div>
-		<div class="spacer"></div>
-		<div class="news-list">
-			<h4>新闻动态</h4>
-			<ul>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-				<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-			</ul>
-		</div>
+		<jsp:include page="include/news-comment.jsp"></jsp:include>
 	</div>
 	<div id="news" class="right-main">
 		<h1>${news.enTitle}</h1>

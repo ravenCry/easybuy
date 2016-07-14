@@ -27,23 +27,7 @@
 			</ul>
 		</div>
 		<div class="side">
-			<div class="news-list">
-				<h4>最新公告</h4>
-				<ul>
-					<c:forEach var="comment" items="${commentList}">
-						<li><a href="news.do?id=${comment.id}" target="_blank">${comment.username}</a></li>
-					</c:forEach>
-				</ul>
-			</div>
-			<div class="spacer"></div>
-			<div class="news-list">
-				<h4>新闻动态</h4>
-				<ul>
-					<c:forEach var="news" items="${newsList}">
-						<li><a href="news.do?id=${news.enId}&action=detail" target="_blank">${news.enTitle}</a></li>
-					</c:forEach>
-				</ul>
-			</div>
+			<jsp:include page="include/news-comment.jsp"></jsp:include>
 		</div>
 		<div class="spacer clear"></div>
 		<div class="hot">

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,20 +22,22 @@
 					<th>状态</th>
 					<th>操作</th>
 				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="w1 c">张三丰</td>
-					<td>高老庄的货发了没？</td>
-					<td class="w1 c">已回复</td>
-					<td class="w1 c"><a href="guestbook-modify.jsp">回复</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
-				<tr>
-					<td class="first w4 c">1</td>
-					<td class="w1 c">张三丰</td>
-					<td>高老庄的货发了没？</td>
-					<td class="w1 c">已回复</td>
-					<td class="w1 c"><a href="guestbook-modify.jsp">回复</a> <a href="javascript:Delete(1);">删除</a></td>
-				</tr>
+				<c:forEach var="ebWord" items="${ebWordList}">
+					<tr>
+						<td class="first w4 c">${ebWord.ew_id}</td>
+						<td class="w1 c">${ebWord.ew_name}</td>
+						<td>${ebWord.ew_content}</td>
+						<c:if test="${ebWord.ew_reply==null}">
+							<td class="w1 c">未回复</td>
+						</c:if>
+						<c:if test="${ebWord.ew_reply!=null}">
+							<td class="w1 c">已回复</td>
+						</c:if>
+						<td class="w1 c">
+							<a href="/word.do?action=jump2Modify&ew_id=${ebWord.ew_id}&ew_name=${ebWord.ew_name}&ew_content=${ebWord.ew_content}&ew_reply=${ebWord.ew_reply}">回复</a>
+							<a href="/word.do?action=delete&ew_id=${ebWord.ew_id}">删除</a></td>
+					</tr>
+				</c:forEach>
 			</table>
 			<div class="pager">
 				<ul class="clearfix">

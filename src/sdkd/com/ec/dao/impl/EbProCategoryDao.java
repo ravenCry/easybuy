@@ -38,14 +38,17 @@ public class EbProCategoryDao extends BaseDao{
     }
     public void update(List<String> params)
     {
-        String sql="update ebprocategory set epc_name=? and epc_parent_id=?  " +
+        String sql="update ebprocategory set epc_name=? " +
                  "where epc_id=?";
         this.exeucteModify(sql,params);
     }
     public void delete(String epc_id)
     {
         List<String> params=new ArrayList<String>();
-        String sql="delete from ebprocategory where epc_id=?";
+        params.add(epc_id);
+        String epc_id_2=new String(epc_id);
+        params.add(epc_id_2);
+        String sql="delete from ebprocategory where epc_id=? or epc_parent_id=?";
         this.exeucteModify(sql,params);
     }
 }
