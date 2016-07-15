@@ -3,8 +3,7 @@ package sdkd.com.ec.dao.impl;
 import sdkd.com.ec.dao.BaseDao;
 import sdkd.com.ec.model.EbProduct;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,5 +76,61 @@ public class EbProductDao extends BaseDao {
         params.add(ep_id);
         String sql="delete from ebproduct where ep_id=?";
         this.exeucteModify(sql,params);
+    }
+    public List<EbProduct> getProductPager(int pageIndex,int pageSize,String epc_child_id){
+        //pageIndex 1 2 3 4 5 6
+        List<EbProduct> productList = new ArrayList<EbProduct>();
+        String sql="select * from ebproduct where epc_child_id=? limit ?,?";
+        ResultSet rs = null;
+        try
+        {
+            Connection con = this.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            int start = (pageIndex * pageSize)-pageSize;
+            int col1=1;
+            int col2=2;
+            int col3=3;
+            ps.setString(col1,epc_child_id);
+            ps.setInt(col2,start);
+            ps.setInt(col3,pageSize);
+            rs = ps.executeQuery();
+            try {
+                while(rs.next()){
+                    EbProduct product = new EbProduct();
+                    product.setId(rs.getInt("ep_id"));
+                    product.setName(rs.getString("ep_name"));
+                    product.setPrice(rs.getDouble("ep_price"));
+                    product.setDescription(rs.getString("ep_description"));
+                    product.setStock(rs.getString("ep_stock"));
+                    product.setDiscount(rs.getInt("ep_discount"));
+                    product.setCid(rs.getInt("epc_id"));
+                    product.setCcid(rs.getInt("epc_child_id"));
+                    product.setFilename(rs.getString("ep_file_name"));
+                    product.setView(rs.getInt("ep_view"));
+                    productList.add(product);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return productList;
+    }
+    public int getProductCount(){
+        int count = 0;
+        String sql = "select count(ep_id) from ebproduct";
+        ResultSet rs = this.executeSearch(sql,null);
+        try {
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 }

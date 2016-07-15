@@ -27,7 +27,7 @@ public class EbProductController extends HttpServlet {
         EbProductDao productDao = new EbProductDao();
         List<EbProduct> list =productDao.getProduct("select * from ebproduct where ep_discount=1 order by ep_price desc limit 0,8",null);
         request.setAttribute("productDiscountList",list);
-        List<EbProduct> list2 =productDao.getProduct("select * from ebproduct order by ep_view desc limit 0,8",null);
+        List<EbProduct> list2 =productDao.getProduct("select * from ebproduct order by ep_view desc limit 0,12",null);
         request.setAttribute("productHotList",list2);
         request.getRequestDispatcher("/proCategory.do").forward(request,response);
     }
@@ -77,12 +77,31 @@ public class EbProductController extends HttpServlet {
     }
     public void cateList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        EbProductDao ebProductDao=new EbProductDao();
+        String pageIndexParam = request.getParameter("pageIndex");
+        String pageSizeParam = request.getParameter("pageSize");
+        int pageIndex  = 1;
+        int pageSize = 4;
+        if(pageIndexParam!=null && !"".equals(pageIndexParam)){
+            pageIndex = Integer.parseInt(pageIndexParam);
+        }
+        if(pageSizeParam!=null && !"".equals(pageSizeParam)){
+            pageSize = Integer.valueOf(pageSizeParam);
+        }
+
+
         String epc_child_id=request.getParameter("pc_id");
-        List<String> params=new ArrayList<String>();
-        params.add(epc_child_id);
-        EbProductDao productDao = new EbProductDao();
-        List<EbProduct> list =productDao.getProduct("select * from ebproduct where epc_child_id =?",params);
+        List<EbProduct> list =new EbProductDao().getProductPager(pageIndex,pageSize,epc_child_id);
+
+        int count = ebProductDao.getProductCount();
+        int totalPage  = count % pageSize == 0 ?(count/pageSize):((count/pageSize)+1);
+
         request.setAttribute("productKindList",list);
+        request.setAttribute("totalPage",totalPage);  //总页数
+        request.setAttribute("pageIndex",pageIndex);
+        request.setAttribute("pc_id",epc_child_id);
+
+        //跳转页面
         request.getRequestDispatcher("/product-list.jsp").forward(request,response);
     }
     public void allList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -101,6 +120,7 @@ public class EbProductController extends HttpServlet {
         String header=part.getHeader("Content-Disposition");
         String ep_file_name=header.substring(header.indexOf("filename=\"")+10,header.lastIndexOf("\""));
         part.write(ep_file_name);
+        ep_file_name="images/"+ep_file_name;
         String ep_price=request.getParameter("productPrice");
         String epc_id=request.getParameter("epc_id");
         String epc_child_id=null;
@@ -129,7 +149,11 @@ public class EbProductController extends HttpServlet {
         String ep_id=request.getParameter("productId");
         String ep_name=request.getParameter("productName");
         String epc_id=request.getParameter("epc_id");
-        String ep_file_name=request.getParameter("photo");
+        Part part=request.getPart("photo");
+        String header=part.getHeader("Content-Disposition");
+        String ep_file_name=header.substring(header.indexOf("filename=\"")+10,header.lastIndexOf("\""));
+        part.write(ep_file_name);
+        ep_file_name="images/"+ep_file_name;
         String ep_price=request.getParameter("productPrice");
         String epc_child_id=null;
         String ep_stock=request.getParameter("productStock");
@@ -200,12 +224,12 @@ public class EbProductController extends HttpServlet {
             request.setCharacterEncoding("utf-8");
             response.setCharacterEncoding("utf-8");
             String submit=request.getParameter("submit");
-            if("更新".equals(submit))
+            if("update".equals(submit))
             {
                 update(request,response);
                 allList(request,response);
             }
-            else if("添加".equals(submit))
+            else if("insert".equals(submit))
             {
                 insert(request,response);
                 allList(request,response);

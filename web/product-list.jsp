@@ -19,13 +19,13 @@
 			<h2>全部商品</h2>
 			<div class="pager">
 				<ul class="clearfix">
-					<li><a href="#">上一页</a></li>
-					<li class="current">1</li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">下一页</a></li>
+					<li><a href="/product.do?action=epc_child_id&pageIndex=1&pc_id=${pc_id}">首页</a></li>
+					<c:if test="${pageIndex>1}"><li><a href="/product.do?action=epc_child_id&pageIndex=${pageIndex-1}&pc_id=${pc_id}">上一页</a></li></c:if>
+					<c:forEach var="page" begin="1" end="${totalPage}">
+						<li><a href="/product.do?action=epc_child_id&pageIndex=${page}&pc_id=${pc_id}">${page}</a></li>
+					</c:forEach>
+					<c:if test="${pageIndex<totalPage}"><li><a href="/product.do?action=epc_child_id&pageIndex=${pageIndex+1}&pc_id=${pc_id}">下一页</a></li></c:if>
+					<li><a href="/product.do?action=epc_child_id&pageIndex=${totalPage}&pc_id=${pc_id}">末页</a></li>
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -43,13 +43,13 @@
 			<div class="clear"></div>
 			<div class="pager">
 				<ul class="clearfix">
-					<li><a href="#">上一页</a></li>
-					<li class="current">1</li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">下一页</a></li>
+					<li><a href="/product.do?action=epc_child_id&pageIndex=1&pc_id=${pc_id}">首页</a></li>
+					<c:if test="${pageIndex>1}"><li><a href="/product.do?action=epc_child_id&pageIndex=${pageIndex-1}&pc_id=${pc_id}">上一页</a></li></c:if>
+					<c:forEach var="page" begin="1" end="${totalPage}">
+						<li><a href="/product.do?action=epc_child_id&pageIndex=${page}&pc_id=${pc_id}">${page}</a></li>
+					</c:forEach>
+					<c:if test="${pageIndex<totalPage}"><li><a href="/product.do?action=epc_child_id&pageIndex=${pageIndex+1}&pc_id=${pc_id}">下一页</a></li></c:if>
+					<li><a href="/product.do?action=epc_child_id&pageIndex=${totalPage}&pc_id=${pc_id}">末页</a></li>
 				</ul>
 			</div>
 		</div>

@@ -14,7 +14,7 @@
 	<div class="main">
 		<h2>添加商品</h2>
 		<div class="manage">
-			<form action="/product.do" enctype="multipart/form-data">
+			<form action="/product.do" method="post" enctype="multipart/form-data">
 				<table class="form">
 					<tr>
 						<td class="field">商品名称：</td>
@@ -51,7 +51,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><label class="ui-blue"><input type="submit" name="submit" value="添加" /></label></td>
+						<td><label class="ui-blue"><input type="submit" name="submit" value="insert" /></label></td>
 					</tr>
 				</table>
 			</form>

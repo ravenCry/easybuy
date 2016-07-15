@@ -14,7 +14,7 @@
 	<div class="main">
 		<h2>修改商品</h2>
 		<div class="manage">
-			<form action="/product.do">
+			<form action="/product.do" method="post" enctype="multipart/form-data">
 				<table class="form">
 					<tr>
 						<td class="field">商品名称：</td>
@@ -55,7 +55,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><label class="ui-blue"><input type="submit" name="submit" value="更新" /></label></td>
+						<td><label class="ui-blue"><input type="submit" name="submit" value="update" /></label></td>
 					</tr>
 				</table>
 			</form>
