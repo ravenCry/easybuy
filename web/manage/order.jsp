@@ -15,7 +15,7 @@
 		<h2>订单管理</h2>
 		<div class="manage">
 			<div class="search">
-				<form method="get">
+				<form method="get" action="/order.do">
 					订单号：<input type="text" class="text" name="orderId" /> 订货人：<input type="text" class="text" name="userName" /> <label class="ui-blue"><input type="submit" name="submit" value="查询" /></label>
 				</form>
 			</div>

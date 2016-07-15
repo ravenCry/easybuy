@@ -10,7 +10,7 @@
 <body>
 <jsp:include page="include/top.jsp"></jsp:include>
 <div id="position" class="wrap">
-    您现在的位置：<a href="index.jsp">易买网</a> &gt; 阅读新闻
+    您现在的位置：<a href="/all.do">易买网</a> &gt; 阅读新闻
 </div>
 <div id="main" class="wrap">
     <div class="left-side">

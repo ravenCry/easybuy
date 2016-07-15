@@ -59,7 +59,38 @@ public class EbOrderController extends HttpServlet {
     }
     public void allList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EbOrderDao orderDao = new EbOrderDao();
-        List<EbOrder> list = orderDao.getOrder();
+        String orderId=request.getParameter("orderId");
+        String userName=request.getParameter("userName");
+        List<String> params=null;
+        String sql="";
+        if("".equals(orderId))
+            orderId=null;
+        if("".equals(userName))
+            userName=null;
+        if(orderId==null&&userName==null)
+        {
+            sql="select * from eborder";
+        }
+        else if(orderId==null&&userName!=null)
+        {
+            params=new ArrayList<String>();
+            sql="select * from eborder where eb_user_name=?";
+            params.add(userName);
+        }
+        else if(orderId!=null&&userName==null)
+        {
+            params=new ArrayList<String>();
+            sql="select * from eborder where eo_id=?";
+            params.add(orderId);
+        }
+        else
+        {
+            params=new ArrayList<String>();
+            sql="select * from eborder where eo_id=? and eb_user_name=?";
+            params.add(orderId);
+            params.add(userName);
+        }
+        List<EbOrder> list = orderDao.getOrder(sql,params);
         request.setAttribute("orderList", list);
         request.getRequestDispatcher("/manage/order.jsp").forward(request, response);
     }
@@ -113,9 +144,10 @@ public class EbOrderController extends HttpServlet {
             if ("更新".equals(submit)) {
                 update(request, response);
                 allList(request, response);
-            } else if ("添加".equals(submit)) {
-                //insert(request, response);
-                allList(request, response);
+            }
+            else if("查询".equals(submit))
+            {
+                allList(request,response);
             }
             else
             {

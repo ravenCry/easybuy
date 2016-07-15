@@ -33,10 +33,6 @@
 						<td><input class="text" type="password" name="rePassWord" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
 					</tr>
 					<tr>
-						<td class="field">验证码：</td>
-						<td><input class="text verycode" type="text" name="veryCode" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><img id="veryCode" src="" /><span></span></td>
-					</tr>
-					<tr>
 						<td></td>
 						<td><label class="ui-green"><input type="submit" name="submit" value="提交注册" /></label></td>
 					</tr>

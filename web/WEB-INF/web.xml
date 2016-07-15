@@ -91,6 +91,14 @@
         <servlet-name>EbWordController</servlet-name>
         <url-pattern>/word.do</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ExitController</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.ExitController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExitController</servlet-name>
+        <url-pattern>/exit.do</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>all.do</welcome-file>
     </welcome-file-list>

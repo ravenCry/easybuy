@@ -120,10 +120,12 @@ public class EbProductDao extends BaseDao {
         }
         return productList;
     }
-    public int getProductCount(){
+    public int getProductCount(String epc_child_id){
         int count = 0;
-        String sql = "select count(ep_id) from ebproduct";
-        ResultSet rs = this.executeSearch(sql,null);
+        String sql = "select count(ep_id) from ebproduct where epc_child_id=?";
+        List<String> params=new ArrayList<String>();
+        params.add(epc_child_id);
+        ResultSet rs = this.executeSearch(sql,params);
         try {
             if(rs.next()){
                 count = rs.getInt(1);

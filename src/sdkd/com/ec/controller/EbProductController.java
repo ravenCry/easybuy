@@ -93,7 +93,7 @@ public class EbProductController extends HttpServlet {
         String epc_child_id=request.getParameter("pc_id");
         List<EbProduct> list =new EbProductDao().getProductPager(pageIndex,pageSize,epc_child_id);
 
-        int count = ebProductDao.getProductCount();
+        int count = ebProductDao.getProductCount(epc_child_id);
         int totalPage  = count % pageSize == 0 ?(count/pageSize):((count/pageSize)+1);
 
         request.setAttribute("productKindList",list);

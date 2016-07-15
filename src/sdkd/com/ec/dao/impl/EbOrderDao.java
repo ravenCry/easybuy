@@ -24,11 +24,10 @@ public class EbOrderDao extends BaseDao{
         params.add(eo_type);
         this.exeucteModify(sql,params);
     }
-    public List<EbOrder> getOrder(){
+    public List<EbOrder> getOrder(String sql,List<String> params){
         List<EbOrder> orderList = new ArrayList<EbOrder>();
-        String sql = "select * from eborder";
         try {
-            ResultSet rs = this.executeSearch(sql,null);
+            ResultSet rs = this.executeSearch(sql,params);
             while (rs.next()){
                 EbOrder order= new EbOrder();
                 order.setEo_id(rs.getInt("eo_id"));

@@ -41,7 +41,7 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<div class="button"><input type="submit" value="123" /></div>
+			<div class="button"><input type="submit" value="" /></div>
 		</form>
 	</div>
 
