@@ -61,8 +61,11 @@
 						<td><input type="text" class="text" name="address" value="" /></td>
 					</tr>
 					<tr>
-						<td class="field">头像：</td>
-						<td><input type="file" class="text" name="photo" /></td>
+						<td class="field">网站权限：</td>
+						<select name="status">
+							<option value="1">普通用户</option>
+							<option value="2">管理员</option>
+						</select>
 					</tr>
 					<tr>
 						<td></td>
