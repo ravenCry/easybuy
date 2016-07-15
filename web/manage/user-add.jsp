@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -35,16 +36,19 @@
 						<td class="field">出生日期：</td>
 						<td>
 							<select name="birthyear">
-								<option value="2000">2000</option>
-								<option value="1999">1999</option>
+								<c:forEach begin="1900" end="2016" varStatus="i">
+									<option value=${i.index}>${i.index}</option>
+								</c:forEach>
 							</select>年
 							<select name="birthmonth">
-								<option value="12">12</option>
-								<option value="11">11</option>
+								<c:forEach begin="1" end="12" varStatus="i">
+									<option value=${i.index}>${i.index}</option>
+								</c:forEach>
 							</select>月
 							<select name="birthday">
-								<option value="2">2</option>
-								<option value="1">1</option>
+								<c:forEach begin="1" end="31" varStatus="i">
+									<option value=${i.index}>${i.index}</option>
+								</c:forEach>
 							</select>日
 						</td>
 					</tr>
