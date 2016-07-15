@@ -17,11 +17,19 @@
 				<table class="form">
 					<tr>
 						<td class="field">订单ID：</td>
-						<td><input type="text" class="text" name="orderId" value="${orderId}" readonly="readonly" /></td>
+						<td><input type="text" class="text" name="id" value="${orderId}" readonly="readonly" /></td>
 					</tr>
 					<tr>
 						<td class="field">订购人姓名：</td>
 						<td><input type="text" class="text" name="name" value="${eb_user_name}" /></td>
+					</tr>
+					<tr>
+						<td class="field">订单总额：</td>
+						<td><input type="text" class="text" name="cost" value="${eo_cost}" /></td>
+					</tr>
+					<tr>
+						<td class="field">支付方式：</td>
+						<td><input type="text" class="text" name="payType" value="${eo_type}" /></td>
 					</tr>
 					<tr>
 						<td class="field">订单状态：</td>

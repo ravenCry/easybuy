@@ -128,7 +128,7 @@ function delCookie(name)
   if(cval!=null) document.cookie=name +"="+cval+";expires="+exp.toGMTString();
 }
 
-function goBuy(id, price)
+function goBuy(id)
 {
 	var newCookie = "";
 	var oldCookie = getCookie("product");
@@ -142,7 +142,7 @@ function goBuy(id, price)
 		newCookie = id;
 	}
 	setCookie("product", newCookie);
-	location.href = "";
+	location.href = "all.do";
 }
 
 function delShopping(id)

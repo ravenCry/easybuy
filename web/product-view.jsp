@@ -21,7 +21,7 @@
 				<p>商城价：<span class="price">${ebProduct.price}</span></p>
 				<p>库　存：${ebProduct.stock}</p>
 				<p>点击量：${ebProduct.view}</p>
-				<div class="button"><input type="button" name="button" value="" onclick="goBuy(${ebProduct.id})" /><a href="shopping.do?action=insert&id=${ebProduct.id}">放入购物车</a></div>
+				<div class="button"><input type="button" name="button" value="" onclick="location='order.do?action=singleBuy&id=${ebProduct.id}&price=${ebProduct.price}'" /><a href="shopping.do?action=insert&id=${ebProduct.id}">放入购物车</a></div>
 			</div>
 			<div class="clear"></div>
 		</div>

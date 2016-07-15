@@ -26,6 +26,8 @@
 					<th>姓名</th>
 					<th>发货地址</th>
 					<th>状态</th>
+					<th>金额</th>
+					<th>支付方式</th>
 					<th>操作</th>
 				</tr>
 				<c:forEach var="order" items="${orderList}">
@@ -34,10 +36,11 @@
 						<td class="w1 c">${order.eb_user_name}</td>
 						<td class="w1 c">${order.eb_address}</td>
 						<td class="w1 c">${order.eo_status}</td>
-
+						<td class="w1 c">${order.eo_cost}</td>
+						<td class="w1 c">${order.eo_type}</td>
 
 						<td class="w1 c"><a href="order.do?
-						action=jump2modify&eo_id=${order.eo_id}&eb_user_name=${order.eb_user_name}&eo_status=${order.eo_status}
+						action=jump2modify&eo_id=${order.eo_id}&eb_user_name=${order.eb_user_name}&eo_status=${order.eo_status}&eo_cost=${order.eo_cost}&eo_type=${order.eo_type}&eo_status=${order.eo_status}
 						">修改</a> <a href="order.do?action=delete&orderId=${order.eo_id}">删除</a></td>
 					</tr>
 				</c:forEach>

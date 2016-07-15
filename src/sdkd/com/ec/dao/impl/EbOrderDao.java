@@ -71,7 +71,7 @@ public class EbOrderDao extends BaseDao{
     }
     public void update(List<String> params)
     {
-        String sql="update eborder set eb_user_name=?  ,eo_status=?" +
+        String sql="update eborder set eb_user_name=? ,eo_cost=? ,eo_status=? ,eo_type=? " +
                 "where eo_id=?";
         this.exeucteModify(sql,params);
     }

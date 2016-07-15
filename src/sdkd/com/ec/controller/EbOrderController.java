@@ -39,7 +39,7 @@ public class EbOrderController extends HttpServlet {
             EbShoppingCarItem tempItem=i.next();
             sum+=tempItem.getEsh_quantity()*tempItem.getEbProduct().getPrice();
         }
-        ebOrderDao.insertOrder(currentUser,sum,"待收货","支付宝");
+        ebOrderDao.insertOrder(currentUser,sum,"待付款","支付宝");
         EbOrder ebOrder = ebOrderDao.getOrderRecent();
         ebOrder.setEbUser(currentUser);
         i=myShoppingCarItems.iterator();
@@ -55,7 +55,27 @@ public class EbOrderController extends HttpServlet {
     }
     public void singleBuy(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        request.getRequestDispatcher("shopping-result.jsp").forward(request,response);
+        HttpSession session=request.getSession();
+        EbUser currentUser=(EbUser)session.getAttribute("currentUser");
+        if(currentUser==null)
+        {
+            request.getRequestDispatcher("login.jsp").forward(request,response);
+        }
+        else
+        {
+            EbOrderDao ebOrderDao=new EbOrderDao();
+            EbOrderDetailDao ebOrderDetailDao=new EbOrderDetailDao();
+            String price=request.getParameter("price");
+            String id=request.getParameter("id");
+            ebOrderDao.insertOrder(currentUser,Double.parseDouble(price),"待付款","支付宝");
+            EbOrder ebOrder = ebOrderDao.getOrderRecent();
+            ebOrder.setEbUser(currentUser);
+            ebOrderDetailDao.insertOrderDetail(ebOrder,Integer.parseInt(id),Double.parseDouble(price),1);
+            List<String> params=new ArrayList<String>();
+            params.add(id);
+            ebOrderDetailDao.exeucteModify("update ebproduct set ep_stock=ep_stock-1 where ep_id=?",params);
+            request.getRequestDispatcher("shopping-result.jsp").forward(request,response);
+        }
     }
     public void allList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EbOrderDao orderDao = new EbOrderDao();
@@ -99,12 +119,16 @@ public class EbOrderController extends HttpServlet {
     }
 
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String eo_id=request.getParameter("orderId");
+        String eo_id=request.getParameter("id");
         String eb_user_name=request.getParameter("name");
+        String eo_cost=request.getParameter("cost");
         String eo_status=request.getParameter("status");
+        String eo_type=request.getParameter("payType");
         List<String> params = new ArrayList<String>();
         params.add(eb_user_name);
+        params.add(eo_cost);
         params.add(eo_status);
+        params.add(eo_type);
         params.add(eo_id);
         new EbOrderDao().update(params);
 
@@ -113,9 +137,14 @@ public class EbOrderController extends HttpServlet {
     public void jump2modify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String eo_id=request.getParameter("eo_id");
         String eb_user_name=request.getParameter("eb_user_name");
+        String eo_cost=request.getParameter("eo_cost");
+        String eo_type=request.getParameter("eo_type");
+        String eo_status=request.getParameter("eo_status");
         request.setAttribute("orderId",eo_id);
         request.setAttribute("eb_user_name",eb_user_name);
-
+        request.setAttribute("eo_cost",eo_cost);
+        request.setAttribute("eo_type",eo_type);
+        request.setAttribute("eo_status",eo_status);
         request.getRequestDispatcher("/manage/order-modify.jsp").forward(request,response);
     }
     public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
