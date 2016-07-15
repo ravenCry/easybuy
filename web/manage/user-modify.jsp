@@ -62,10 +62,12 @@
 					</tr>
 					<tr>
 						<td class="field">网站权限：</td>
-						<select name="status">
-							<option value="1">普通用户</option>
-							<option value="2">管理员</option>
-						</select>
+						<td>
+							<select name="status">
+								<option value="1">普通用户</option>
+								<option value="2">管理员</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<td></td>

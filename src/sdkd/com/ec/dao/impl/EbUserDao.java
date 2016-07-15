@@ -64,13 +64,13 @@ public class EbUserDao extends BaseDao {
     public void insert(List<String> params)
     {
         String sql="insert into ebuser(eb_user_name,eu_password,eu_sex," +
-                "eu_birthday,eu_mobile,eb_address) values(?,?,?,?,?,?)";
+                "eu_birthday,eu_mobile,eb_address,eu_status) values(?,?,?,?,?,?,?)";
         this.exeucteModify(sql,params);
     }
     public void update(List<String> params)
     {
         String sql="update ebuser set eb_user_name=? , eu_password=? , " +
-                "eu_sex=? , eu_birthday=? , eu_mobile=? , eb_address=?" +
+                "eu_sex=? , eu_birthday=? , eu_mobile=? , eb_address=? , eu_status=? " +
                 "where eb_user_id=?";
         this.exeucteModify(sql,params);
     }

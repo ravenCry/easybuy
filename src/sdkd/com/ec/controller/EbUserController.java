@@ -42,11 +42,12 @@ public class EbUserController extends HttpServlet {
         new EbUserDao().delete(userId);
     }
     public void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-        {
+    {
         String eb_user_id=request.getParameter("userName");
         String eb_user_name=request.getParameter("name");
         String eu_password=request.getParameter("passWord");
         String eu_sex=request.getParameter("sex");
+        String eu_status=request.getParameter("status");
         if("1".equals(eu_sex))
         {
             eu_sex="男";
@@ -67,6 +68,7 @@ public class EbUserController extends HttpServlet {
         params.add(eu_birthday);
         params.add(eu_mobile);
         params.add(eb_address);
+        params.add(eu_status);
         params.add(eb_user_id);
         new EbUserDao().update(params);
     }
@@ -75,6 +77,7 @@ public class EbUserController extends HttpServlet {
         String eb_user_name=request.getParameter("name");
         String eu_password=request.getParameter("passWord");
         String eu_sex=request.getParameter("sex");
+        String eu_status=request.getParameter("status");
         if("1".equals(eu_sex))
         {
             eu_sex="男";
@@ -95,6 +98,7 @@ public class EbUserController extends HttpServlet {
         params.add(eu_birthday);
         params.add(eu_mobile);
         params.add(eb_address);
+        params.add(eu_status);
         new EbUserDao().insert(params);
         request.getRequestDispatcher("/manage/manage-result.jsp").forward(request,response);
     }

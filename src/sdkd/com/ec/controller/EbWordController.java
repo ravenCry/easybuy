@@ -23,7 +23,18 @@ public class EbWordController extends HttpServlet {
     {
         List<EbWord> ebWords=new EbWordDao().selectAll();
         request.setAttribute("ebWordList", ebWords);
-        request.getRequestDispatcher("/manage/guestbook.jsp").forward(request, response);
+    }
+    public void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        String ew_name=request.getParameter("guestName");
+        String ew_content=request.getParameter("guestContent");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String ew_creat_time=df.format(new Date());
+        List<String> params=new ArrayList<String>();
+        params.add(ew_name);
+        params.add(ew_content);
+        params.add(ew_creat_time);
+        new EbWordDao().insert(params);
     }
     public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -63,15 +74,22 @@ public class EbWordController extends HttpServlet {
         if("wordList".equals(action))
         {
             allList(request,response);
+            request.getRequestDispatcher("/manage/guestbook.jsp").forward(request, response);
         }
         else if("delete".equals(action))
         {
             delete(request,response);
             allList(request,response);
+            request.getRequestDispatcher("/manage/guestbook.jsp").forward(request, response);
         }
         else if("jump2Modify".equals(action))
         {
             jump2Modify(request,response);
+        }
+        else if("wordListF".equals(action))
+        {
+            allList(request,response);
+            request.getRequestDispatcher("/guestbook.jsp").forward(request, response);
         }
         else
         {
@@ -81,8 +99,11 @@ public class EbWordController extends HttpServlet {
             if ("更新".equals(submit)) {
                 update(request,response);
                 allList(request,response);
-            } else if ("添加".equals(submit)) {
-
+                request.getRequestDispatcher("/manage/guestbook.jsp").forward(request, response);
+            } else if ("提交留言".equals(submit)) {
+                insert(request,response);
+                allList(request,response);
+                request.getRequestDispatcher("/guestbook.jsp").forward(request, response);
             }
         }
     }

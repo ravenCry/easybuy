@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,27 +18,20 @@
 		<div class="guestbook">
 			<h2>全部留言</h2>
 			<ul>
-				<li>
-					<dl>
-						<dt>那个什么衣服贵吗</dt>
-						<dd class="author">网友：张三丰 <span class="timer">2010:10:10 20:00:01</span></dd>
-						<dd>不贵</dd>
-					</dl>
-				</li>
-				<li>
-					<dl>
-						<dt>那个什么衣服贵吗</dt>
-						<dd class="author">网友：张三丰 <span class="timer">2010:10:10 20:00:01</span></dd>
-						<dd>不贵</dd>
-					</dl>
-				</li>
-				<li>
-					<dl>
-						<dt>那个什么衣服贵吗</dt>
-						<dd class="author">网友：张三丰 <span class="timer">2010:10:10 20:00:01</span></dd>
-						<dd>不贵</dd>
-					</dl>
-				</li>
+                <c:forEach var="ebWord" items="${ebWordList}">
+					<li>
+						<dl>
+							<dd class="author">网友：${ebWord.ew_name}<span class="timer">${ebWord.ew_creat_time}</span></dd>
+							<dd>留言内容：${ebWord.ew_content}</dd>
+							<c:if test="${ebWord.ew_reply==null}">
+								<dd class="author">回复内容：未回复</dd>
+							</c:if>
+							<c:if test="${ebWord.ew_reply!=null}">
+								<dd class="author">回复内容：${ebWord.ew_reply}<span class="timer">${ebWord.ew_reply_time}</span></dd>
+							</c:if>
+						</dl>
+					</li>
+				</c:forEach>
 			</ul>
 			<div class="clear"></div>
 			<div class="pager">
@@ -57,10 +51,6 @@
 						<tr>
 							<td class="field">昵称：</td>
 							<td><input class="text" type="text" name="guestName" /></td>
-						</tr>
-						<tr>
-							<td class="field">留言标题：</td>
-							<td><input class="text" type="text" name="guestTitle" /></td>
 						</tr>
 						<tr>
 							<td class="field">留言内容：</td>

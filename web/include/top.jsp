@@ -14,14 +14,15 @@
 <body>
 <div id="header" class="wrap">
     <div id="logo"><img src="images/logo.gif" /></div>
-    <div class="help"><a href="#" class="shopping">购物车</a>
+    <div class="help">
         <c:if test="${currentUser==null}"><a href="login.jsp">登录</a></c:if>
         <c:if test="${currentUser!=null}">
+            <a href="shopping.do?action=list" class="shopping">购物车</a>
         ${currentUser.name}
             <a href="/exit.do">退出</a>
         </c:if>
         <c:if test="${currentUser.status==2}"><a href="/manage/index.jsp">返回后台页面</a></c:if>
-        <a href="register.jsp">注册</a><a href="guestbook.jsp">留言</a></div>
+        <a href="register.jsp">注册</a><a href="/word.do?action=wordListF">留言</a></div>
     <div class="navbar">
         <ul class="clearfix">
             <li class="current"><a href="#">首页</a></li>

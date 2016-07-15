@@ -47,4 +47,9 @@ public class EbWordDao extends BaseDao{
         String sql="update ebword set ew_reply=?,ew_reply_time=? where ew_id=?";
         this.exeucteModify(sql,params);
     }
+    public void insert(List<String> params)
+    {
+        String sql="insert ebword(ew_name,ew_content,ew_creat_time) values(?,?,?)";
+        this.exeucteModify(sql,params);
+    }
 }
