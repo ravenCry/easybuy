@@ -25,8 +25,6 @@
             <dd><a href="/word.do?action=wordList">留言管理</a></dd>
             <dt>新闻管理</dt>
             <dd><em><a href="/manage/news-add.jsp">新增</a></em><a href="/news.do?action=newsList">新闻管理</a></dd>
-            <dt>公告管理</dt>
-            <dd><em><a href="/manage/news-add.jsp">新增</a></em><a href="/news.do?action=newsList">公告管理</a></dd>
         </dl>
     </div>
 </div>

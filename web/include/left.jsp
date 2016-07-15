@@ -32,9 +32,9 @@
     <div class="last-view">
         <h2>最近浏览</h2>
         <dl class="clearfix">
-            <c:forEach var="recent" items="${recent}">
+            <c:forEach var="recent" items="${recentList}">
                 <dt><img src="${recent.filename}" width="54px" height="54px"/></dt>
-                <dd><a href="/pro.do?if=${recent.id}&action=detail">${recent.name}</a></dd>
+                <dd><a href="/product.do?id=${recent.id}&action=detail">${recent.name}</a></dd>
             </c:forEach>
         </dl>
     </div>

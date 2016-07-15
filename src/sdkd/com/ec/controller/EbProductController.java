@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -51,14 +52,17 @@ public class EbProductController extends HttpServlet {
 
     public void recent(HttpServletRequest request, EbProduct ebProduct, int id) throws ServletException, IOException
     {
-        List<EbProduct> recentList = (List<EbProduct>)request.getSession().getAttribute("recent");
+        List<EbProduct> recentList = (List<EbProduct>)request.getSession().getAttribute("recentList");
         if(recentList==null){
             recentList=new ArrayList<EbProduct>();
         }else{
-            for(EbProduct pro:recentList){
-                if(pro.getId()==id){
-                    // System.out.println(pro.getName()+"****");
-                    recentList.remove(pro);
+            Iterator<EbProduct> it=recentList.iterator();
+            while (it.hasNext())
+            {
+                EbProduct pro=it.next();
+                if(pro.getId()==id)
+                {
+                    it.remove();
                 }
             }
         }
@@ -69,7 +73,7 @@ public class EbProductController extends HttpServlet {
             recentList.remove(0);
 
         }
-        request.getSession().setAttribute("recent",recentList);
+        request.getSession().setAttribute("recentList",recentList);
     }
     public void cateList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

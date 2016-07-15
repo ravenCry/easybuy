@@ -21,4 +21,14 @@ public class EbOrderDetailDao extends BaseDao {
         params.add(quantity*ebProduct.getPrice()+"");
         this.exeucteModify(sql,params);
     }
+    public void insertOrderDetail(EbOrder ebOrder, int id, double price,int quantity)
+    {
+        String sql="insert into eborderdetail(eo_id,ep_id,eod_quantity,eod_cost) values(?,?,?,?)";
+        List<String> params=new ArrayList<String>();
+        params.add(ebOrder.getEo_id()+"");
+        params.add(id+"");
+        params.add(quantity+"");
+        params.add(quantity*price+"");
+        this.exeucteModify(sql,params);
+    }
 }

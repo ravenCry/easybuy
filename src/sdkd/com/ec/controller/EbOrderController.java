@@ -5,6 +5,7 @@ import sdkd.com.ec.dao.impl.EbOrderDetailDao;
 import sdkd.com.ec.dao.impl.EbProductDao;
 import sdkd.com.ec.dao.impl.EbShoppingCarDao;
 import sdkd.com.ec.model.EbOrder;
+import sdkd.com.ec.model.EbProduct;
 import sdkd.com.ec.model.EbShoppingCarItem;
 import sdkd.com.ec.model.EbUser;
 
