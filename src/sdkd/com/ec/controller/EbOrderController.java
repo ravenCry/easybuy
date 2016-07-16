@@ -165,6 +165,11 @@ public class EbOrderController extends HttpServlet {
         {
             jump2modify(request,response);
         }
+        else if("delete".equals(action))
+        {
+            delete(request,response);
+            allList(request, response);
+        }
         else
         {
             request.setCharacterEncoding("utf-8");

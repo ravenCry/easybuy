@@ -41,7 +41,7 @@
 
 						<td class="w1 c"><a href="order.do?
 						action=jump2modify&eo_id=${order.eo_id}&eb_user_name=${order.eb_user_name}&eo_status=${order.eo_status}&eo_cost=${order.eo_cost}&eo_type=${order.eo_type}&eo_status=${order.eo_status}
-						">修改</a> <a href="order.do?action=delete&orderId=${order.eo_id}">删除</a></td>
+						">修改</a> <a href="order.do?action=delete&orderID=${order.eo_id}">删除</a></td>
 					</tr>
 				</c:forEach>
 
